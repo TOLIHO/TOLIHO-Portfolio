@@ -1571,7 +1571,13 @@ footer {
 
     }
 
-      .hero,
+   .portfolio-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero,
     .cv-page,
     .about-page,
     .portfolio-page,
@@ -1579,12 +1585,6 @@ footer {
     .contact-page {
 
         padding-top:240px;
-
-    }
-
-   .portfolio-grid {
-
-        grid-template-columns:1fr;
 
     }
 
