@@ -745,64 +745,6 @@ footer {
 
 
 
-
-
-
-
-/* =====================================================
-   MOBILE SUPPORT
-===================================================== */
-
-
-@media(max-width:800px){
-
-
-    nav {
-
-        flex-direction:column;
-
-        gap:20px;
-
-    }
-
-
-    .links {
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-    }
-
-
-    h1 {
-
-        font-size:3rem;
-
-    }
-   
-.about-page {
-
-    padding-top:160px;
-
-}
-
-
-
-.about-container {
-
-    display:grid;
-
-    grid-template-columns:
-
-    1.3fr 0.7fr;
-
-    gap:80px;
-
-    align-items:start;
-
-}
-
 /* ==========================================
    ABOUT PAGE - FINAL LAYOUT
 ========================================== */
@@ -925,6 +867,42 @@ footer {
     height:auto;
 
 }
+
+
+
+
+/* =====================================================
+   MOBILE SUPPORT
+===================================================== */
+
+
+@media(max-width:800px){
+
+
+    nav {
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+
+    .links {
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+
+    h1 {
+
+        font-size:3rem;
+
+    }
+
 
 
 }
