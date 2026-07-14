@@ -855,8 +855,11 @@ footer {
     object-fit:cover;
 
 }
-
-
+   
+.about-content {
+    background:red !important;
 }
 
+.about-image {
+    background:blue !important;
 }
