@@ -3,466 +3,17 @@
 
 <head>
 
-    <!-- BASIC PAGE SETTINGS -->
+    <!-- ===========================
+         PAGE SETTINGS
+    ============================ -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Browser tab title -->
     <title>Toliho | Environment & 3D Artist</title>
 
-
-    <style>
-
-        /* =====================================================
-           COLOUR VARIABLES
-           Change these if you want to adjust the theme globally
-        ===================================================== */
-
-        :root {
-
-            --background: #0c0f0d;      /* Main page background */
-            --surface: #151916;         /* Cards / panels */
-            --surface-light: #202520;   /* Hover states */
-            
-            --text: #e8ebe8;            /* Main text */
-            --muted: #9da59f;           /* Secondary text */
-
-            --green: #00bf63;           /* Main brand colour */
-            --green-dark: #008f4a;       /* Darker green */
-
-        }
-
-
-
-        /* =====================================================
-           GLOBAL RESET
-        ===================================================== */
-
-        * {
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-
-        html {
-            scroll-behavior:smooth;
-        }
-
-
-        body {
-
-            background:var(--background);
-            color:var(--text);
-
-            font-family:
-            Inter,
-            Arial,
-            Helvetica,
-            sans-serif;
-
-            line-height:1.6;
-
-        }
-
-
-        a {
-            text-decoration:none;
-            color:inherit;
-        }
-
-
-
-        /* =====================================================
-           NAVIGATION BAR
-        ===================================================== */
-
-        nav {
-
-            position:fixed;
-
-            top:0;
-            left:0;
-
-            width:100%;
-
-            padding:30px 8%;
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
-            background:
-            rgba(12,15,13,0.75);
-
-            backdrop-filter:blur(15px);
-
-            z-index:100;
-
-        }
-
-
-
-        /* Logo */
-
-        .logo {
-
-            font-size:1.6rem;
-
-            font-weight:800;
-
-            letter-spacing:8px;
-
-        }
-
-
-        .logo span {
-
-            color:var(--green);
-
-        }
-
-
-
-        /* Navigation links */
-
-        .links {
-
-            display:flex;
-
-            gap:35px;
-
-        }
-
-
-        .links a {
-
-            color:var(--muted);
-
-            transition:0.3s;
-
-        }
-
-
-        .links a:hover {
-
-            color:var(--green);
-
-        }
-
-
-
-
-
-        /* =====================================================
-           HERO SECTION
-           Main landing area
-        ===================================================== */
-
-
-        .hero {
-
-            min-height:100vh;
-
-            padding:0 8%;
-
-            display:flex;
-
-            align-items:center;
-
-
-            /* Replace this gradient with your hero image later */
-
-            background:
-
-            radial-gradient(
-            circle at top right,
-            rgba(0,191,99,0.15),
-            transparent 40%
-            );
-
-        }
-
-
-
-        .hero-content {
-
-            max-width:900px;
-
-        }
-
-
-
-        .tag {
-
-            color:var(--green);
-
-            text-transform:uppercase;
-
-            letter-spacing:5px;
-
-            font-size:.9rem;
-
-        }
-
-
-
-        h1 {
-
-            font-size:
-
-            clamp(3.5rem,7vw,7rem);
-
-            line-height:0.95;
-
-            margin:25px 0;
-
-        }
-
-
-
-        .hero-description {
-
-            color:var(--muted);
-
-            font-size:1.25rem;
-
-            max-width:650px;
-
-        }
-
-
-
-
-        /* Button */
-
-        .button {
-
-            display:inline-block;
-
-            margin-top:40px;
-
-            padding:15px 35px;
-
-            border:
-
-            1px solid var(--green);
-
-
-            color:var(--green);
-
-            transition:.3s;
-
-        }
-
-
-
-        .button:hover {
-
-            background:var(--green);
-
-            color:black;
-
-        }
-
-
-
-
-
-        /* =====================================================
-           GENERAL SECTIONS
-        ===================================================== */
-
-
-        section {
-
-            padding:100px 8%;
-
-        }
-
-
-
-        .section-title {
-
-            margin-bottom:50px;
-
-        }
-
-
-
-        h2 {
-
-            font-size:3rem;
-
-        }
-
-
-
-        .subtitle {
-
-            color:var(--muted);
-
-        }
-
-
-
-
-
-        /* =====================================================
-           PROJECT CARDS
-        ===================================================== */
-
-
-        .grid {
-
-            display:grid;
-
-            grid-template-columns:
-
-            repeat(auto-fit,minmax(300px,1fr));
-
-            gap:30px;
-
-        }
-
-
-
-
-        .project {
-
-            height:350px;
-
-            background:
-
-            linear-gradient(
-
-            135deg,
-
-            var(--surface),
-
-            var(--surface-light)
-
-            );
-
-
-            border:1px solid #252b27;
-
-            padding:30px;
-
-
-            display:flex;
-
-            flex-direction:column;
-
-            justify-content:end;
-
-
-            transition:.4s;
-
-        }
-
-
-
-        .project:hover {
-
-            transform:translateY(-10px);
-
-            border-color:var(--green);
-
-        }
-
-
-
-        .project h3 {
-
-            color:var(--green);
-
-            font-size:1.5rem;
-
-        }
-
-
-
-        .project p {
-
-            color:var(--muted);
-
-        }
-
-
-
-
-
-
-        /* =====================================================
-           ABOUT PREVIEW
-        ===================================================== */
-
-
-        .about {
-
-            max-width:800px;
-
-        }
-
-
-        .about p {
-
-            color:var(--muted);
-
-            margin-bottom:20px;
-
-        }
-
-
-
-
-
-
-        /* =====================================================
-           BLOG CARDS
-        ===================================================== */
-
-
-        .blog {
-
-            background:var(--surface);
-
-            padding:30px;
-
-            border:1px solid #252b27;
-
-        }
-
-
-        .blog h3 {
-
-            color:var(--green);
-
-        }
-
-
-
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-
-        footer {
-
-            padding:40px 8%;
-
-            color:#666;
-
-            border-top:1px solid #222;
-
-        }
-
-
-
-    </style>
+    <!-- Main website stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -471,41 +22,64 @@
 <body>
 
 
-
-<!-- =====================================================
+<!-- ===========================
      NAVIGATION
-===================================================== -->
 
+     This same navigation will appear
+     across every page.
+=========================== -->
+
+<header>
 
 <nav>
 
-    <div class="logo">
+    <!-- Website logo -->
+    <a href="index.html" class="logo">
         TOLI<span>HO</span>
-    </div>
+    </a>
 
 
+    <!-- Main navigation links -->
     <div class="links">
 
-        <a href="#work">Work</a>
+        <a href="portfolio.html">
+            Portfolio
+        </a>
 
-        <a href="#about">About</a>
+        <a href="about.html">
+            About
+        </a>
 
-        <a href="#blog">Blog</a>
+        <a href="cv.html">
+            CV
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="blog.html">
+            Blog
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
 
     </div>
+
 
 </nav>
 
+</header>
 
 
 
 
 
-<!-- =====================================================
-     HERO / LANDING AREA
-===================================================== -->
+<!-- ===========================
+     HERO SECTION
+
+     Large introduction area.
+     Replace background with your
+     favourite environment render later.
+=========================== -->
 
 
 <section class="hero">
@@ -514,26 +88,34 @@
 <div class="hero-content">
 
 
-<p class="tag">
-Environment & 3D Artist
+<p class="eyebrow">
+
+ENVIRONMENT & 3D ARTIST
+
 </p>
+
 
 
 <h1>
-Creating immersive worlds<br>
+
+Creating immersive worlds
 for games.
+
 </h1>
 
 
-<p class="hero-description">
+
+<p class="hero-text">
 
 I am Tom Oliver Hockenhull, a UK based Environment Artist
-specialising in game-ready environments, props and technical art.
+specialising in game-ready environments, props and
+technical art workflows.
 
 </p>
 
 
-<a class="button" href="#work">
+
+<a href="portfolio.html" class="button">
 
 View Portfolio
 
@@ -551,76 +133,160 @@ View Portfolio
 
 
 
-<!-- =====================================================
-     FEATURED PROJECTS
-===================================================== -->
+<!-- ===========================
+     FEATURED WORK
+
+     Only your strongest 3 projects.
+
+     The complete collection exists
+     on portfolio.html.
+=========================== -->
 
 
-<section id="work">
+<section class="featured">
 
 
-<div class="section-title">
+<div class="section-header">
 
 <h2>
 Featured Work
 </h2>
 
-<p class="subtitle">
-Selected environments and game projects
+<p>
+Selected environments, assets and game projects.
 </p>
+
 
 </div>
 
 
 
-<div class="grid">
 
 
-<a class="project" href="projects/airport-terminal.html">
+<div class="project-grid">
+
+
+
+<!-- FEATURED PROJECT 1 -->
+
+<a href="projects/blogpost1.html"
+class="project-card">
+
+
+<div class="project-image">
+
+<!-- Replace with image later -->
+
+<img src="images/project1.jpg"
+alt="Project One">
+
+</div>
+
+
+<div class="project-info">
 
 <h3>
-Airport Terminal
+Project One
 </h3>
 
 <p>
-Unreal Engine 5 Environment
+Environment Art · Unreal Engine 5
 </p>
+
+</div>
+
 
 </a>
 
 
 
 
-<a class="project" href="projects/kobold-khaos.html">
+
+
+
+
+<!-- FEATURED PROJECT 2 -->
+
+<a href="projects/blogpost2.html"
+class="project-card">
+
+
+<div class="project-image">
+
+<img src="images/project2.jpg"
+alt="Project Two">
+
+</div>
+
+
+<div class="project-info">
 
 <h3>
-Kobold Khaos
+Project Two
 </h3>
 
 <p>
-Arena Movement Shooter
+Environment Art · Props
 </p>
+
+</div>
+
 
 </a>
 
 
 
 
-<a class="project" href="portfolio.html">
+
+
+
+
+<!-- FEATURED PROJECT 3 -->
+
+<a href="projects/blogpost3.html"
+class="project-card">
+
+
+<div class="project-image">
+
+<img src="images/project3.jpg"
+alt="Project Three">
+
+</div>
+
+
+<div class="project-info">
 
 <h3>
-Prop Collection
+Project Three
 </h3>
 
 <p>
-Game-ready assets
+Game Development
 </p>
+
+</div>
+
 
 </a>
 
 
 
 </div>
+
+
+
+
+
+<!-- Link to full portfolio -->
+
+<a href="portfolio.html"
+class="text-link">
+
+View all projects →
+
+</a>
+
 
 
 </section>
@@ -631,36 +297,49 @@ Game-ready assets
 
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
 
 
-<section id="about">
+<!-- ===========================
+     ABOUT PREVIEW
+
+     Short introduction only.
+     Full biography lives on:
+     about.html
+=========================== -->
 
 
-<div class="about">
+<section class="about-preview">
+
+
+<div>
+
+
+<p class="eyebrow">
+ABOUT ME
+</p>
 
 
 <h2>
-About
+Building worlds through
+art and technology.
 </h2>
+
 
 
 <p>
 
 Since 2018 I have studied and worked within the games industry,
-specialising in environment art, modelling, texturing and Unreal Engine workflows.
+focusing on environment art, modelling, texturing and Unreal Engine workflows.
 
 </p>
 
 
-<p>
+<a href="about.html"
+class="text-link">
 
-My focus is creating believable spaces with strong composition,
-technical optimisation and visual storytelling.
+Read more about me →
 
-</p>
+</a>
 
 
 </div>
@@ -674,58 +353,80 @@ technical optimisation and visual storytelling.
 
 
 
-<!-- =====================================================
+
+
+
+<!-- ===========================
      BLOG PREVIEW
-===================================================== -->
+
+     Shows latest articles.
+     Full blog archive:
+     blog.html
+=========================== -->
 
 
-<section id="blog">
+<section class="latest-blog">
 
 
-<div class="section-title">
+<div class="section-header">
 
 <h2>
-Latest Articles
+Latest Thoughts
 </h2>
+
+<p>
+Breakdowns, workflows and development notes.
+</p>
+
 
 </div>
 
 
 
-<div class="grid">
 
 
-<a class="blog"
-href="blog/modular-environments.html">
+<div class="blog-grid">
+
+
+<a href="blog/article1.html"
+class="blog-card">
+
 
 <h3>
 Creating Modular Environments
 </h3>
 
+
 <p>
-Breaking down my environment workflow.
+A breakdown of planning, modelling and optimisation.
 </p>
+
 
 </a>
 
 
 
-<a class="blog"
-href="blog/ue5-workflow.html">
+
+<a href="blog/article2.html"
+class="blog-card">
+
 
 <h3>
-Working in Unreal Engine 5
+Technical Art Experiments
 </h3>
 
+
 <p>
-Materials, lighting and optimisation.
+Materials, shaders and improving workflows.
 </p>
+
 
 </a>
 
 
 
 </div>
+
 
 
 </section>
@@ -737,12 +438,13 @@ Materials, lighting and optimisation.
 
 
 
-<!-- =====================================================
-     CONTACT
-===================================================== -->
+
+<!-- ===========================
+     CONTACT CTA
+=========================== -->
 
 
-<section id="contact">
+<section class="contact-banner">
 
 
 <h2>
@@ -750,11 +452,13 @@ Let's create something.
 </h2>
 
 
-<p class="subtitle">
+<a href="contact.html"
+class="button">
 
-email@example.com
+Contact Me
 
-</p>
+</a>
+
 
 
 </section>
@@ -765,11 +469,20 @@ email@example.com
 
 
 
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+
 <footer>
 
+<p>
 © Toliho — Tom Oliver Hockenhull
+</p>
 
 </footer>
+
 
 
 
