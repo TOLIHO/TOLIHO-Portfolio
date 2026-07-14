@@ -803,37 +803,42 @@ footer {
 
 }
 
-/*========
-   ABOUT PAGE
-   =============== */
+/* ==========================================
+   ABOUT PAGE LAYOUT FIX
+========================================== */
 
-.about-content p {
 
-    color:var(--muted);
+.about-container {
 
-    max-width: 650px;
+    display:grid;
 
-    margin-bottom:25px;
+    grid-template-columns: 60% 40%;
 
-    font-size:1.1rem;
+    gap:60px;
+
+    align-items:start;
+
+    max-width:1400px;
+
+    margin:0 auto;
+
+}
+
+
+
+
+.about-content {
+
+    max-width:750px;
 
 }
 
-
-
-.about-content h1 {
-
-    margin-bottom:40px;
-
-}
 
 
 
 .about-image {
 
-    position:sticky;
-
-    top:150px;
+    width:100%;
 
 }
 
@@ -843,65 +848,11 @@ footer {
 
     width:100%;
 
-    border:
+    max-width:500px;
 
-    1px solid var(--border);
+    height:auto;
 
-}
-
-
-
-
-
-/* SOFTWARE SECTION */
-
-
-.software-section {
-
-    padding-top:50px;
-
-}
-
-
-
-.software-image {
-
-    background:var(--surface);
-
-    padding:40px;
-
-    border:
-
-    1px solid var(--border);
-
-}
-
-
-
-.software-image img {
-
-    width:100%;
-
-}
-
-
-
-
-
-@media(max-width:900px){
-
-
-.about-container {
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-.about-image {
-
-    position:relative;
+    object-fit:cover;
 
 }
 
