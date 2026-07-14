@@ -158,13 +158,11 @@ nav {
 
 
 
-.logo {
+.logo img {
 
-    font-size:1.5rem;
+    width:150px;
 
-    font-weight:800;
-
-    letter-spacing:8px;
+    height:auto;
 
 }
 
