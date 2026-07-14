@@ -839,7 +839,61 @@ footer {
 
 }
 
+/* ==========================================
+   ABOUT PAGE FULL WIDTH LAYOUT
+========================================== */
 
+
+.about-page {
+
+    padding-left:4%;
+    padding-right:0;
+
+}
+
+
+
+.about-container {
+
+    max-width:none;
+
+    width:100%;
+
+    grid-template-columns:
+
+    minmax(500px, 0.9fr) 1fr;
+
+    gap:60px;
+
+}
+
+
+
+.about-content {
+
+    max-width:750px;
+
+}
+
+
+
+.about-feature-image {
+
+    width:100%;
+
+}
+
+
+
+.about-feature-image img {
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
 
 /* =====================================================
    MOBILE SUPPORT
