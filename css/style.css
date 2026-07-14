@@ -743,74 +743,103 @@ footer {
 
 }
 
-
 /* ==========================================
    ABOUT PAGE
 ========================================== */
 
+.about-page{
 
-.about-container {
+    padding:160px 0 100px;
+
+}
+
+
+.about-container{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:42% 58%;
 
-    gap:70px;
+    width:100%;
 
-    max-width:1200px;
-
-    margin:auto;
+    gap:60px;
 
     align-items:stretch;
 
 }
 
 
-
-.about-content {
+.about-content{
 
     display:flex;
 
     flex-direction:column;
 
+    padding-left:5vw;
+
+    max-width:800px;
+
 }
 
 
+.about-content h1{
 
-.software-section {
+    margin-bottom:30px;
 
-    margin-top:auto;
+}
 
-    padding-top:40px;
+
+.about-content p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+}
+
+
+/* -------------------------
+   Software logos
+-------------------------- */
+
+.software-section{
 
     display:flex;
 
     justify-content:center;
 
+    margin-top:30px;
+
 }
 
 
-
-.software-section img {
+.software-section img{
 
     width:180px;
+
+    max-width:100%;
 
     height:auto;
 
 }
 
 
+/* -------------------------
+   Artwork
+-------------------------- */
 
-
-.about-feature-image {
+.about-feature-image{
 
     display:flex;
 
+    justify-content:flex-end;
+
 }
 
 
-
-.about-feature-image img {
+.about-feature-image img{
 
     width:100%;
 
@@ -820,81 +849,48 @@ footer {
 
 }
 
-@media(max-width:900px){
 
+/* -------------------------
+   Mobile
+-------------------------- */
 
-.about-page {
+@media (max-width:900px){
 
-    padding-top:140px;
+    .about-page{
 
-}
+        padding:140px 8% 80px;
 
+    }
 
-.about-content {
+    .about-container{
 
-    max-width:100%;
+        grid-template-columns:1fr;
 
-}
+        gap:50px;
 
+    }
 
-}
+    .about-content{
 
-/* ==========================================
-   ABOUT PAGE FULL WIDTH LAYOUT
-========================================== */
+        padding-left:0;
 
+        max-width:100%;
 
-.about-page {
+    }
 
-    padding-left:4%;
-    padding-right:0;
+    .software-section{
 
-}
+        justify-content:center;
 
+    }
 
+    .about-feature-image img{
 
-.about-container {
+        height:auto;
 
-    max-width:none;
-
-    width:100%;
-
-    grid-template-columns:
-
-    minmax(500px, 0.9fr) 1fr;
-
-    gap:60px;
+    }
 
 }
-
-
-
-.about-content {
-
-    max-width:750px;
-
-}
-
-
-
-.about-feature-image {
-
-    width:100%;
-
-}
-
-
-
-.about-feature-image img {
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-}
-
 /* =====================================================
    MOBILE SUPPORT
 ===================================================== */
