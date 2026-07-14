@@ -806,7 +806,7 @@ footer {
 
 .software-section img {
 
-    width:200px;
+    width:350px;
 
     height:auto;
 
@@ -828,7 +828,7 @@ footer {
 
     height:100%;
 
-    max-height:900px;
+    max-height: 1200px;
 
     object-fit:cover;
 
