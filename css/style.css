@@ -862,6 +862,54 @@ footer {
     }
 
 }
+
+/* ==========================================
+   CONTACT BANNER
+========================================== */
+
+.contact-banner {
+
+    background:#00bf63;
+
+    width:100%;
+
+    padding:70px 8%;
+
+    text-align:center;
+
+}
+
+
+
+.contact-banner h2 {
+
+    color:#ffffff;
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.contact-banner a {
+
+    color:#ffffff;
+
+    font-size:1.5rem;
+
+    font-weight:800;
+
+}
+
+
+
+.contact-banner a:hover {
+
+    text-decoration:underline;
+
+}
 /* =====================================================
    MOBILE SUPPORT
 ===================================================== */
