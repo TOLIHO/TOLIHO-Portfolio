@@ -1571,6 +1571,12 @@ footer {
 
     }
 
+   .portfolio-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
 
     .links {
 
