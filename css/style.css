@@ -811,6 +811,8 @@ footer {
 
     color:var(--muted);
 
+    max-width: 650px;
+
     margin-bottom:25px;
 
     font-size:1.1rem;
