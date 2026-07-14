@@ -1515,6 +1515,47 @@ footer {
     font-size:.8rem;
 
 }
+
+.portfolio-tags span {
+
+    border:1px solid var(--green);
+
+    color:var(--green);
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-size:.8rem;
+
+}
+
+
+/* ==========================================
+   PORTFOLIO MOBILE
+========================================== */
+
+
+@media(max-width:900px){
+
+
+    .portfolio-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}
+
+
+
+/* =====================================================
+   MOBILE SUPPORT
+===================================================== */
+
+
+@media(max-width:800px){
 /* =====================================================
    MOBILE SUPPORT
 ===================================================== */
