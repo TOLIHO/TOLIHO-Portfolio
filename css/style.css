@@ -779,14 +779,18 @@ footer {
     padding-left:5vw;
 
     max-width:850px;
-   
-    margin-bottom:25px;
-
-    line-height:1.8;
 
 }
 
 
+
+.about-content p {
+
+    margin-bottom:35px;
+
+    line-height:1.8;
+
+}
 
 .software-section {
 
