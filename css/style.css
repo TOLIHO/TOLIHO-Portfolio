@@ -862,6 +862,11 @@ footer {
     .about-feature-image img {
 
         height:auto;
+       
+       display:flex;
+       
+       padding-right:4vw;
+
 
     }
 
