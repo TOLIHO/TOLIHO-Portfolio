@@ -749,13 +749,19 @@ footer {
 ========================================== */
 
 
-.about-page {
+.about-container {
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
 
     max-width:1200px;
 
     margin:auto;
 
-    padding-top:160px;
+    align-items:stretch;
 
 }
 
@@ -763,41 +769,42 @@ footer {
 
 .about-content {
 
-    max-width:850px;
+    display:flex;
+
+    flex-direction:column;
 
 }
 
 
 
-.about-content h1 {
+.software-section {
 
-    margin-bottom:40px;
+    margin-top:auto;
 
-}
+    padding-top:40px;
 
+    display:flex;
 
-
-.about-content p {
-
-    color:var(--muted);
-
-    font-size:1.15rem;
-
-    line-height:1.8;
-
-    margin-bottom:30px;
+    justify-content:center;
 
 }
 
 
 
+.software-section img {
+
+    width:250px;
+
+    height:auto;
+
+}
 
 
-/* Large artwork */
+
 
 .about-feature-image {
 
-    margin-top:100px;
+    display:flex;
 
 }
 
@@ -807,41 +814,11 @@ footer {
 
     width:100%;
 
-    height:auto;
+    height:100%;
 
-    display:block;
-
-}
-
-
-
-
-
-
-/* Software logos */
-
-.software-section {
-
-    margin-top:100px;
+    object-fit:cover;
 
 }
-
-
-
-.software-section img {
-
-    width:100%;
-
-    max-width:450px;
-
-    height:auto;
-
-    margin-top:30px;
-
-}
-
-
-
 
 @media(max-width:900px){
 
