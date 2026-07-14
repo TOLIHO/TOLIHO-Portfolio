@@ -753,13 +753,13 @@ footer {
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap:80px;
 
     max-width:1400px;
 
-    margin:0 auto;
+    margin:auto;
 
     align-items:stretch;
 
@@ -769,7 +769,9 @@ footer {
 
 .about-content {
 
-    max-width:700px;
+    display:flex;
+
+    flex-direction:column;
 
 }
 
@@ -785,9 +787,32 @@ footer {
 
 
 
+
+/* Software logos underneath bio */
+
+.software-image {
+
+    margin-top:40px;
+
+}
+
+
+.software-image img {
+
+    width:100%;
+
+    max-width:600px;
+
+}
+
+
+
+
+/* Large artwork */
+
 .about-image {
 
-    height:100%;
+    display:flex;
 
 }
 
@@ -799,50 +824,7 @@ footer {
 
     height:100%;
 
-    min-height:100%;
-
     object-fit:cover;
-
-}
-
-
-
-.software-image {
-
-    margin-top:50px;
-
-}
-
-
-
-.software-image img {
-
-    width:100%;
-
-    max-width:600px;
-
-    height:auto;
-
-}
-
-
-
-
-@media(max-width:900px){
-
-
-    .about-container {
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .about-image img {
-
-        height:auto;
-
-    }
 
 }
 
