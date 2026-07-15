@@ -153,9 +153,43 @@
 <script>
 
     const POSTS_PER_PAGE = 20;
+    const MOBILE_POSTS_PER_PAGE = 10;
+    const MOBILE_BREAKPOINT = 900;
+
+    function getPostsPerPage() {
+        return window.innerWidth <= MOBILE_BREAKPOINT ? MOBILE_POSTS_PER_PAGE : POSTS_PER_PAGE;
+    }
 
     const posts = [
 
+        {
+            title: "Lorem Ipsum Dolor Sit Amet",
+            date: "2026-07-14",
+            excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+            image: "images/blog/placeholder1.jpg",
+            link: "blog/placeholder1.html"
+        },
+        {
+            title: "Consectetur Adipiscing Elit",
+            date: "2026-07-07",
+            excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+            image: "images/blog/placeholder2.jpg",
+            link: "blog/placeholder2.html"
+        },
+        {
+            title: "Sed Do Eiusmod Tempor",
+            date: "2026-06-29",
+            excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            image: "images/blog/placeholder3.jpg",
+            link: "blog/placeholder3.html"
+        },
+        {
+            title: "Incididunt Ut Labore",
+            date: "2026-06-22",
+            excerpt: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+            image: "images/blog/placeholder4.jpg",
+            link: "blog/placeholder4.html"
+        },
         {
             title: "Technical Art Experiments",
             date: "2026-06-20",
@@ -199,12 +233,13 @@
         const grid = document.getElementById('blog-grid');
         grid.innerHTML = '';
 
-        const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
+        const perPage = getPostsPerPage();
+        const totalPages = Math.max(1, Math.ceil(posts.length / perPage));
         page = Math.min(Math.max(1, page), totalPages);
         currentPage = page;
 
-        const start = (page - 1) * POSTS_PER_PAGE;
-        const pagePosts = posts.slice(start, start + POSTS_PER_PAGE);
+        const start = (page - 1) * perPage;
+        const pagePosts = posts.slice(start, start + perPage);
 
         pagePosts.forEach(post => {
             const card = document.createElement('a');
@@ -282,6 +317,19 @@
     }
 
     renderPage(currentPage);
+
+    let resizeTimer;
+    let lastPerPage = getPostsPerPage();
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const nowPerPage = getPostsPerPage();
+            if (nowPerPage !== lastPerPage) {
+                lastPerPage = nowPerPage;
+                renderPage(1);
+            }
+        }, 200);
+    });
 
 </script>
 
