@@ -481,14 +481,26 @@ footer {
     }
     .about-container {
         grid-template-columns:1fr;
+        position:relative;
     }
     .about-content {
         padding-left:0;
+        position:relative;
+        z-index:1;
+    }
+    .about-feature-image {
+        position:absolute;
+        inset:0;
+        margin:0;
+        z-index:0;
+        opacity:.18;
+        pointer-events:none;
     }
     .about-feature-image img {
-        height:auto;
-        display:flex;
-        padding-right:4vw;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        filter:blur(12px);
     }
 }
 
@@ -832,7 +844,7 @@ footer {
     }
 
     section {
-        padding-top:140px;
+        padding-top:160px;
     }
 
     .hero {
