@@ -88,6 +88,18 @@
         Latest Thoughts
     </h1>
 
+    <div class="blog-filter">
+        <label for="tag-filter">Filter by category</label>
+        <select id="tag-filter">
+            <option value="all">All</option>
+            <option value="Art">Art</option>
+            <option value="Programming">Programming</option>
+            <option value="Design">Design</option>
+            <option value="Events">Events</option>
+            <option value="Off-topic">Off-topic</option>
+        </select>
+    </div>
+
 </div>
 
 
@@ -133,8 +145,13 @@
      4. Add a thumbnail image somewhere like images/blog/ and point
         "image" at it — it appears blurred on the card automatically,
         no extra editing needed
-     5. Save the file — that's it. No new HTML page needed, ever.
-     6. Once you pass 20 posts, page 2 appears automatically.
+     5. Set "tags" to one or more of: Art, Programming, Design,
+        Events, Off-topic — these are what the filter dropdown
+        matches against. Add a new category to both this array
+        AND the <select> options in the HTML above if you want
+        a new one to show up as a filter choice
+     6. Save the file — that's it. No new HTML page needed, ever.
+     7. Once you pass 20 posts, page 2 appears automatically.
 
      ---------------------------------------------------------------------
      TEMPLATE (copy from here)
@@ -144,6 +161,7 @@
          date: "2026-07-15",
          excerpt: "A one or two sentence summary of what this post covers.",
          image: "images/blog/your-image.jpg",
+         tags: ["Art"],
          link: "blog/your-article-file.html"
      },
 
@@ -167,6 +185,7 @@
             date: "2026-07-14",
             excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
             image: "images/blog/placeholder1.jpg",
+            tags: ["Art"],
             link: "blog/placeholder1.html"
         },
         {
@@ -174,6 +193,7 @@
             date: "2026-07-07",
             excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
             image: "images/blog/placeholder2.jpg",
+            tags: ["Programming"],
             link: "blog/placeholder2.html"
         },
         {
@@ -181,6 +201,7 @@
             date: "2026-06-29",
             excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             image: "images/blog/placeholder3.jpg",
+            tags: ["Design"],
             link: "blog/placeholder3.html"
         },
         {
@@ -188,6 +209,7 @@
             date: "2026-06-22",
             excerpt: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
             image: "images/blog/placeholder4.jpg",
+            tags: ["Events", "Off-topic"],
             link: "blog/placeholder4.html"
         },
         {
@@ -195,6 +217,7 @@
             date: "2026-06-20",
             excerpt: "Materials, shaders and improving workflows.",
             image: "images/blog/article2.jpg",
+            tags: ["Programming", "Design"],
             link: "blog/article2.html"
         },
         {
@@ -202,6 +225,7 @@
             date: "2026-06-01",
             excerpt: "A breakdown of planning, modelling and optimisation.",
             image: "images/blog/article1.jpg",
+            tags: ["Art", "Design"],
             link: "blog/article1.html"
         }
 
@@ -216,11 +240,22 @@
     ------------------------------------------------------- */
 
     let currentPage = getPageFromURL();
+    let currentTag = getTagFromURL();
 
     function getPageFromURL() {
         const params = new URLSearchParams(window.location.search);
         const page = parseInt(params.get('page'), 10);
         return (page && page > 0) ? page : 1;
+    }
+
+    function getTagFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('tag') || 'all';
+    }
+
+    function getFilteredPosts() {
+        if (currentTag === 'all') return posts;
+        return posts.filter(post => post.tags && post.tags.includes(currentTag));
     }
 
     function formatDate(dateStr) {
@@ -233,13 +268,21 @@
         const grid = document.getElementById('blog-grid');
         grid.innerHTML = '';
 
+        const filteredPosts = getFilteredPosts();
         const perPage = getPostsPerPage();
-        const totalPages = Math.max(1, Math.ceil(posts.length / perPage));
+        const totalPages = Math.max(1, Math.ceil(filteredPosts.length / perPage));
         page = Math.min(Math.max(1, page), totalPages);
         currentPage = page;
 
         const start = (page - 1) * perPage;
-        const pagePosts = posts.slice(start, start + perPage);
+        const pagePosts = filteredPosts.slice(start, start + perPage);
+
+        if (pagePosts.length === 0) {
+            const empty = document.createElement('p');
+            empty.className = 'blog-empty';
+            empty.textContent = 'No posts in this category yet.';
+            grid.appendChild(empty);
+        }
 
         pagePosts.forEach(post => {
             const card = document.createElement('a');
@@ -266,9 +309,18 @@
             const excerptEl = document.createElement('p');
             excerptEl.textContent = post.excerpt;
 
+            const tagsEl = document.createElement('div');
+            tagsEl.className = 'blog-tags';
+            (post.tags || []).forEach(tag => {
+                const tagEl = document.createElement('span');
+                tagEl.textContent = tag;
+                tagsEl.appendChild(tagEl);
+            });
+
             info.appendChild(dateEl);
             info.appendChild(titleEl);
             info.appendChild(excerptEl);
+            info.appendChild(tagsEl);
 
             card.appendChild(imageWrap);
             card.appendChild(info);
@@ -282,6 +334,11 @@
             url.searchParams.delete('page');
         } else {
             url.searchParams.set('page', page);
+        }
+        if (currentTag === 'all') {
+            url.searchParams.delete('tag');
+        } else {
+            url.searchParams.set('tag', currentTag);
         }
         window.history.replaceState({}, '', url);
     }
@@ -317,6 +374,14 @@
     }
 
     renderPage(currentPage);
+
+    const tagFilterEl = document.getElementById('tag-filter');
+    tagFilterEl.value = currentTag;
+    tagFilterEl.addEventListener('change', () => {
+        currentTag = tagFilterEl.value;
+        renderPage(1);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     let resizeTimer;
     let lastPerPage = getPostsPerPage();
