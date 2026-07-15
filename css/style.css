@@ -831,4 +831,13 @@ footer {
         font-size:3rem;
     }
 
+    section {
+        padding-top:140px;
+    }
+
+    .hero {
+        min-height:auto;
+        align-items:flex-start;
+    }
+
 }
