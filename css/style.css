@@ -360,6 +360,58 @@ section {
     color:var(--muted);
 }
 
+.blog-tags {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.blog-tags span {
+    border:1px solid var(--green);
+    color:var(--green);
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:.75rem;
+}
+
+.blog-empty {
+    grid-column:1 / -1;
+    color:var(--muted);
+    text-align:center;
+    padding:60px 0;
+}
+
+
+/* ---- Filter dropdown ---- */
+
+.blog-filter {
+    margin-top:30px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.blog-filter label {
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.blog-filter select {
+    background:var(--surface);
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:10px 18px;
+    font-family:inherit;
+    font-size:.95rem;
+    cursor:pointer;
+}
+
+.blog-filter select:focus {
+    outline:none;
+    border-color:var(--green);
+}
+
 
 /* ---- Pagination ---- */
 
