@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        blog | Toliho
+    </title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+
+<!-- ===========================
+     NAVIGATION
+=========================== -->
+
+
+<header>
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        <img src="images/toliho-logo.png" alt="Toliho">
+
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="links">
+
+        <a href="portfolio.html">
+            Portfolio
+        </a>
+
+        <a href="cv.html">
+            CV
+        </a>
+
+        <a href="blog.html">
+            blog
+        </a>
+
+        <a href="about.html">
+            About/Contact
+        </a>
+
+    </div>
+
+</nav>
+</header>
+
+
+
+
+<!-- ===========================
+     BLOG PAGE
+=========================== -->
+
+
+<section class="blog-page">
+
+
+<div class="blog-header">
+
+    <p class="eyebrow">
+        BLOG
+    </p>
+
+    <h1>
+        Latest Thoughts
+    </h1>
+
+</div>
+
+
+<div class="blog-grid" id="blog-grid">
+    <!-- Cards are injected here by JavaScript. See the script at the
+         bottom of this file to add new posts. -->
+</div>
+
+
+<div class="pagination" id="pagination">
+    <!-- Prev / Next controls are injected here by JavaScript -->
+</div>
+
+
+</section>
+
+
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+
+<footer>
+
+© Toliho — Tom Oliver Hockenhull
+
+</footer>
+
+
+
+
+<!-- =====================================================================
+     BLOG POST DATA + PAGINATION SCRIPT
+
+     HOW TO ADD A NEW BLOG POST:
+     1. Copy the template block below (between the ===== lines)
+     2. Paste it as a new entry at the TOP of the "posts" array
+        (newest first keeps the blog in date order automatically
+        if you always add to the top)
+     3. Fill in your own title, excerpt, date and link
+     4. Add a thumbnail image somewhere like images/blog/ and point
+        "image" at it — it appears blurred on the card automatically,
+        no extra editing needed
+     5. Save the file — that's it. No new HTML page needed, ever.
+     6. Once you pass 20 posts, page 2 appears automatically.
+
+     ---------------------------------------------------------------------
+     TEMPLATE (copy from here)
+
+     {
+         title: "Post Title Goes Here",
+         date: "2026-07-15",
+         excerpt: "A one or two sentence summary of what this post covers.",
+         image: "images/blog/your-image.jpg",
+         link: "blog/your-article-file.html"
+     },
+
+     TEMPLATE (copy to here)
+     ===================================================================== -->
+
+<script>
+
+    const POSTS_PER_PAGE = 20;
+
+    const posts = [
+
+        {
+            title: "Technical Art Experiments",
+            date: "2026-06-20",
+            excerpt: "Materials, shaders and improving workflows.",
+            image: "images/blog/article2.jpg",
+            link: "blog/article2.html"
+        },
+        {
+            title: "Creating Modular Environments",
+            date: "2026-06-01",
+            excerpt: "A breakdown of planning, modelling and optimisation.",
+            image: "images/blog/article1.jpg",
+            link: "blog/article1.html"
+        }
+
+        // Newer posts go ABOVE this line, using the template above.
+
+    ];
+
+
+    /* -------------------------------------------------------
+       Everything below this line is the pagination engine.
+       You shouldn't need to touch it — just edit "posts" above.
+    ------------------------------------------------------- */
+
+    let currentPage = getPageFromURL();
+
+    function getPageFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const page = parseInt(params.get('page'), 10);
+        return (page && page > 0) ? page : 1;
+    }
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        if (isNaN(d)) return dateStr;
+        return d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+    }
+
+    function renderPage(page) {
+        const grid = document.getElementById('blog-grid');
+        grid.innerHTML = '';
+
+        const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
+        page = Math.min(Math.max(1, page), totalPages);
+        currentPage = page;
+
+        const start = (page - 1) * POSTS_PER_PAGE;
+        const pagePosts = posts.slice(start, start + POSTS_PER_PAGE);
+
+        pagePosts.forEach(post => {
+            const card = document.createElement('a');
+            card.href = post.link;
+            card.className = 'blog-card';
+
+            const imageWrap = document.createElement('div');
+            imageWrap.className = 'blog-card-image';
+            const img = document.createElement('img');
+            img.src = post.image;
+            img.alt = post.title;
+            imageWrap.appendChild(img);
+
+            const info = document.createElement('div');
+            info.className = 'blog-info';
+
+            const dateEl = document.createElement('span');
+            dateEl.className = 'blog-date';
+            dateEl.textContent = formatDate(post.date);
+
+            const titleEl = document.createElement('h3');
+            titleEl.textContent = post.title;
+
+            const excerptEl = document.createElement('p');
+            excerptEl.textContent = post.excerpt;
+
+            info.appendChild(dateEl);
+            info.appendChild(titleEl);
+            info.appendChild(excerptEl);
+
+            card.appendChild(imageWrap);
+            card.appendChild(info);
+            grid.appendChild(card);
+        });
+
+        renderPagination(page, totalPages);
+
+        const url = new URL(window.location);
+        if (page === 1) {
+            url.searchParams.delete('page');
+        } else {
+            url.searchParams.set('page', page);
+        }
+        window.history.replaceState({}, '', url);
+    }
+
+    function renderPagination(page, totalPages) {
+        const el = document.getElementById('pagination');
+        el.innerHTML = '';
+
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.textContent = '← Previous';
+        prevBtn.disabled = page === 1;
+        prevBtn.addEventListener('click', () => goToPage(page - 1));
+
+        const label = document.createElement('span');
+        label.className = 'page-label';
+        label.textContent = `Page ${page} of ${totalPages}`;
+
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next →';
+        nextBtn.disabled = page === totalPages;
+        nextBtn.addEventListener('click', () => goToPage(page + 1));
+
+        el.appendChild(prevBtn);
+        el.appendChild(label);
+        el.appendChild(nextBtn);
+    }
+
+    function goToPage(page) {
+        renderPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderPage(currentPage);
+
+</script>
+
+
+</body>
+
+</html>
