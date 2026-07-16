@@ -43,9 +43,9 @@
 const posts = [
 
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "This is a test that tells me the blog code is working!",
         date: "14-07-2026",
-        excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+        excerpt: "If you can see this, the JS file and new HTML is working!",
         image: "images/blog/placeholder1.jpg",
         tags: ["Art"],
         link: "blog/placeholder1.html"
