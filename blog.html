@@ -134,39 +134,14 @@
 
 
 <!-- =====================================================================
-     BLOG POST DATA + PAGINATION SCRIPT
+     BLOG PAGINATION SCRIPT
 
-     HOW TO ADD A NEW BLOG POST:
-     1. Copy the template block below (between the ===== lines)
-     2. Paste it as a new entry at the TOP of the "posts" array
-        (newest first keeps the blog in date order automatically
-        if you always add to the top)
-     3. Fill in your own title, excerpt, date and link
-     4. Add a thumbnail image somewhere like images/blog/ and point
-        "image" at it — it appears blurred on the card automatically,
-        no extra editing needed
-     5. Set "tags" to one or more of: Art, Programming, Design,
-        Events, Off-topic — these are what the filter dropdown
-        matches against. Add a new category to both this array
-        AND the <select> options in the HTML above if you want
-        a new one to show up as a filter choice
-     6. Save the file — that's it. No new HTML page needed, ever.
-     7. Once you pass 20 posts, page 2 appears automatically.
+     Post data now lives in js/blog-posts.js — that's the single file
+     to edit when adding a new post. This script just handles
+     filtering, pagination and rendering the cards.
+===================================================================== -->
 
-     ---------------------------------------------------------------------
-     TEMPLATE (copy from here)
-
-     {
-         title: "Post Title Goes Here",
-         date: "2026-07-15",
-         excerpt: "A one or two sentence summary of what this post covers.",
-         image: "images/blog/your-image.jpg",
-         tags: ["Art"],
-         link: "blog/your-article-file.html"
-     },
-
-     TEMPLATE (copy to here)
-     ===================================================================== -->
+<script src="js/blog-posts.js"></script>
 
 <script>
 
@@ -177,61 +152,6 @@
     function getPostsPerPage() {
         return window.innerWidth <= MOBILE_BREAKPOINT ? MOBILE_POSTS_PER_PAGE : POSTS_PER_PAGE;
     }
-
-    const posts = [
-
-        {
-            title: "Lorem Ipsum Dolor Sit Amet",
-            date: "2026-07-14",
-            excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-            image: "images/blog/placeholder1.jpg",
-            tags: ["Art"],
-            link: "blog/placeholder1.html"
-        },
-        {
-            title: "Consectetur Adipiscing Elit",
-            date: "2026-07-07",
-            excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-            image: "images/blog/placeholder2.jpg",
-            tags: ["Programming"],
-            link: "blog/placeholder2.html"
-        },
-        {
-            title: "Sed Do Eiusmod Tempor",
-            date: "2026-06-29",
-            excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            image: "images/blog/placeholder3.jpg",
-            tags: ["Design"],
-            link: "blog/placeholder3.html"
-        },
-        {
-            title: "Incididunt Ut Labore",
-            date: "2026-06-22",
-            excerpt: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-            image: "images/blog/placeholder4.jpg",
-            tags: ["Events", "Off-topic"],
-            link: "blog/placeholder4.html"
-        },
-        {
-            title: "Technical Art Experiments",
-            date: "2026-06-20",
-            excerpt: "Materials, shaders and improving workflows.",
-            image: "images/blog/article2.jpg",
-            tags: ["Programming", "Design"],
-            link: "blog/article2.html"
-        },
-        {
-            title: "Creating Modular Environments",
-            date: "2026-06-01",
-            excerpt: "A breakdown of planning, modelling and optimisation.",
-            image: "images/blog/article1.jpg",
-            tags: ["Art", "Design"],
-            link: "blog/article1.html"
-        }
-
-        // Newer posts go ABOVE this line, using the template above.
-
-    ];
 
 
     /* -------------------------------------------------------
@@ -258,8 +178,13 @@
         return posts.filter(post => post.tags && post.tags.includes(currentTag));
     }
 
+    function parseDate(dateStr) {
+        const [day, month, year] = dateStr.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
     function formatDate(dateStr) {
-        const d = new Date(dateStr + 'T00:00:00');
+        const d = parseDate(dateStr);
         if (isNaN(d)) return dateStr;
         return d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
     }
