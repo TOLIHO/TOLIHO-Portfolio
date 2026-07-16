@@ -494,48 +494,10 @@ Breakdowns, workflows and development notes.
 
 
 
-<div class="blog-grid">
-
-
-<a href="blog/article1.html"
-class="blog-card">
-
-
-<h3>
-Creating Modular Environments
-</h3>
-
-
-<p>
-A breakdown of planning, modelling and optimisation.
-</p>
-
-
-</a>
-
-
-
-
-<a href="blog/article2.html"
-class="blog-card">
-
-
-<h3>
-Technical Art Experiments
-</h3>
-
-
-<p>
-Materials, shaders and improving workflows.
-</p>
-
-
-</a>
-
-
-
+<div class="blog-grid" id="latest-blog-grid">
 </div>
 
+<a href="blog.html" class="text-link">View all posts →</a>
 
 
 </section>
@@ -593,6 +555,71 @@ Contact Me
 </footer>
 
 
+
+
+<!-- =====================================================================
+     LATEST POSTS PREVIEW
+
+     Loads the same post data blog.html uses, sorts by date, and shows
+     the 3 most recent. Add new posts in js/blog-posts.js only - this
+     section updates itself automatically.
+===================================================================== -->
+
+<script src="js/blog-posts.js"></script>
+
+<script>
+
+    const latestGrid = document.getElementById('latest-blog-grid');
+
+    function parseDate(dateStr) {
+        const [day, month, year] = dateStr.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    const sortedPosts = [...posts].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+    const latestPosts = sortedPosts.slice(0, 2);
+
+    function formatDate(dateStr) {
+        const d = parseDate(dateStr);
+        if (isNaN(d)) return dateStr;
+        return d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+    }
+
+    latestPosts.forEach(post => {
+        const card = document.createElement('a');
+        card.href = post.link;
+        card.className = 'blog-card';
+
+        const imageWrap = document.createElement('div');
+        imageWrap.className = 'blog-card-image';
+        const img = document.createElement('img');
+        img.src = post.image;
+        img.alt = post.title;
+        imageWrap.appendChild(img);
+
+        const info = document.createElement('div');
+        info.className = 'blog-info';
+
+        const dateEl = document.createElement('span');
+        dateEl.className = 'blog-date';
+        dateEl.textContent = formatDate(post.date);
+
+        const titleEl = document.createElement('h3');
+        titleEl.textContent = post.title;
+
+        const excerptEl = document.createElement('p');
+        excerptEl.textContent = post.excerpt;
+
+        info.appendChild(dateEl);
+        info.appendChild(titleEl);
+        info.appendChild(excerptEl);
+
+        card.appendChild(imageWrap);
+        card.appendChild(info);
+        latestGrid.appendChild(card);
+    });
+
+</script>
 
 
 </body>
