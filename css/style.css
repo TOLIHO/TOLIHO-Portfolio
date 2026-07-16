@@ -156,7 +156,7 @@ nav {
 }
 
 .hero-bg-blur {
-    filter:blur(10px);
+    filter:blur(25px);
     transform:scale(1.1);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
@@ -952,7 +952,16 @@ footer {
 @media(max-width:800px){
 
     .hero-bg img {
-        object-position:left center;
+        object-position:left 100px center;
+    }
+
+    .hero-bg img:not(.hero-bg-blur) {
+        display:none;
+    }
+
+    .hero-bg-blur {
+        -webkit-mask-image:none;
+        mask-image:none;
     }
 
     nav {
