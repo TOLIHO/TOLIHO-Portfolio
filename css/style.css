@@ -156,7 +156,7 @@ nav {
 }
 
 .hero-bg-blur {
-    filter:blur(25px);
+    filter:blur(10px);
     transform:scale(1.1);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
