@@ -235,7 +235,7 @@
 
         const tagsEl = document.createElement('div');
         tagsEl.className = 'portfolio-tags';
-        (project.tags || []).forEach(tag => {
+        (project.tags || []).slice(0, 3).forEach(tag => {
             const tagEl = document.createElement('span');
             tagEl.textContent = tag;
             tagsEl.appendChild(tagEl);
