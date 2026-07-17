@@ -500,15 +500,34 @@ section {
        margin back in on the left only. */
     padding-left: 0;
     padding-right: 0;
+
+    /* The global "section" rule adds 200px of top padding, which is
+       what pushes this block so far below the date. Pull it in. */
+    padding-top: 40px;
 }
 
 .post-text {
     flex: 1;
+    max-width: 650px;
     margin-left: 8%;
     text-align: left;
     font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text);
+}
+
+.post-text h2 {
+    font-size: 2.5rem;
+    color: var(--green);
+    margin-bottom: 25px;
+}
+
+.post-text p {
+    margin-bottom: 25px;
+}
+
+.post-text p:last-child {
+    margin-bottom: 0;
 }
 
 .post-image {
@@ -526,9 +545,11 @@ section {
         flex-direction: column;
         padding-left: 8%;
         padding-right: 8%;
+        padding-top: 30px;
     }
     .post-text {
         margin-left: 0;
+        max-width: none;
     }
     .post-image {
         width: 100%;
