@@ -157,6 +157,7 @@ nav {
 
 .hero-bg-blur {
     filter:blur(10px);
+    transform:scale(1.1);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
 }
@@ -318,9 +319,10 @@ section {
 }
 
 .about-bg-blur {
-    filter:blur(0px);
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
-    mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
+    filter:blur(10px);
+    transform:scale(1.1);
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
+    mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
 }
 
 .about-preview-content {
@@ -490,6 +492,7 @@ section {
 .post-split-layout {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 40px;
     width: 100%;
 
@@ -529,7 +532,7 @@ section {
 }
 
 .post-image {
-    width: 40%;
+    width: 24%;
     margin: 0;
 }
 
