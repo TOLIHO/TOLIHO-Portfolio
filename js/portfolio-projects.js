@@ -48,6 +48,7 @@ const projects = [
         date: "17-07-2026", // placeholder - replace with real date
         excerpt: "First full model using the Blender pipeline.",
         image: "images/project1.jpg",
+        category: "Art",
         tags: ["Blender", "Substance Painter", "Prop Model", "Weapon Model"],
         link: "projects/project1.html"
     },
@@ -56,6 +57,7 @@ const projects = [
         date: "01-06-2026", // placeholder - replace with real date
         excerpt: "A detailed enviroment showcasing VFX, texturing and modular set creation and utilisation with a heavy focus on PBR materials and atmospheric storytelling.",
         image: "images/project2.jpg",
+        category: "Art",
         tags: ["Environment Art", "Substance Painter", "Substance Designer", "MA Project", "Report", "UE5", "3DS Max", "Niagara"],
         link: "projects/project2.html"
     },
@@ -64,6 +66,7 @@ const projects = [
         date: "15-04-2026", // placeholder - replace with real date
         excerpt: "A weapon prop created to further develop my skills with PBR materials and texturing.",
         image: "images/project3.jpg",
+        category: "Art",
         tags: ["3DS Max", "Marmoset Toolbag", "Substance Painter", "Substance Designer", "MA Project", "Prop Model", "Weapon Model"],
         link: "projects/project3.html"
     },
@@ -72,6 +75,7 @@ const projects = [
         date: "20-01-2026", // placeholder - replace with real date
         excerpt: "A modular envrioment recreating the opening scenes from Fallout 3.",
         image: "images/project4.jpg",
+        category: "Art",
         tags: ["Environment", "Quixel", "Substance Painter", "UE4", "3DS Max", "Niagara", "BA Project"],
         link: "projects/project4.html"
     },
@@ -80,6 +84,7 @@ const projects = [
         date: "05-09-2025", // placeholder - replace with real date
         excerpt: "An early project from my BA wherein I created an environment with for use as an arch viz artefact.",
         image: "images/project5.jpg",
+        category: "Art",
         tags: ["Enviroment", "Arch Viz", "UE4", "Substance Painter", "Substance Designer", "BA Project"],
         link: "projects/project5.html"
     }
