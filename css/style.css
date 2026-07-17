@@ -497,11 +497,16 @@ section {
 }
 
 /* Two-column blog post layout: text left (with margin), image right (flush).
-   Reusable — drop this class + markup into any future post that needs it. */
+   Reusable — drop this class + markup into any future post that needs it.
+   Built the same way as .about-container: a grid with align-items:stretch
+   so the image column fills the same height as the text column and its
+   img can object-fit:cover to match - rather than flex's align-items:
+   flex-start, which just let the image sit at its own natural size,
+   pinned to the top instead of filling the column like the about page. */
 .post-split-layout {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 24%;
+    align-items: stretch;
     gap: 40px;
     width: 100%;
 
@@ -517,7 +522,6 @@ section {
 }
 
 .post-text {
-    flex: 1;
     max-width: 900px;
     margin-left: 8%;
     text-align: left;
@@ -541,18 +545,25 @@ section {
 }
 
 .post-image {
-    width: 24%;
+    /* display:flex here (same trick as .about-feature-image) lets the
+       img's height:100% below actually resolve against something,
+       so it can stretch to fill the grid row instead of collapsing
+       to its own intrinsic height. */
+    display: flex;
+    width: 100%;
     margin: 0;
 }
 
 .post-image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
 @media(max-width:900px){
     .post-split-layout {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         padding-left: 8%;
         padding-right: 8%;
         padding-top: 30px;
@@ -562,7 +573,11 @@ section {
         max-width: none;
     }
     .post-image {
+        /* Stacked on mobile, height:100% has no row to stretch to
+           anymore, so give it a real height the same way
+           .blog-card-image does elsewhere on the site. */
         width: 100%;
+        aspect-ratio: 16 / 9;
     }
 }
 
