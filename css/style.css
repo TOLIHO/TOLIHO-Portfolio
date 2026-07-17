@@ -487,19 +487,19 @@ section {
     text-align: left;
 }
 
-/* BLOG POST LAYOUT (FIXED) */
 .blog-content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 0;
+    width: 100%;
+    max-width: none;          /* let it span the full content width */
+    margin: 0;                /* stop centering */
+    padding: 60px 8% 60px;    /* keep nice side gutters */
 
-    /* Force left alignment */
-    text-align: left !important;
+    text-align: left;
 }
+
 
 .blog-content {
     flex: 1;
