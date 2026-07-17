@@ -1138,8 +1138,7 @@ footer {
    itself is capped narrower instead, which shrinks the squares
    proportionally rather than cropping them. */
 .featured .portfolio-grid {
-    max-width: 900px;
-    margin: 0 auto 25px;
+    margin-bottom: 25px;
     gap: 20px;
 }
 
