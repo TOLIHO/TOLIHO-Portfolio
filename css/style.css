@@ -508,7 +508,7 @@ section {
 
 .post-text {
     flex: 1;
-    max-width: 650px;
+    max-width: 900px;
     margin-left: 8%;
     text-align: left;
     font-size: 1.2rem;
