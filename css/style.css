@@ -482,69 +482,82 @@ section {
     border-color:var(--green);
 }
 
+/* BLOG HERO */
+.blog-hero {
+    text-align: left;
+}
+
+/* BLOG CONTENT */
 .blog-content {
-    max-width: 900px;      /* Keeps text readable */
-    margin: 0 auto;        /* Centers the whole block */
-    text-align: left;      /* Ensures text aligns left */
-    padding: 60px 0;       /* Balanced spacing */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 0;
     font-size: 1.2rem;
     line-height: 1.7;
-    color: var(--text);    /* White text */
+    color: var(--text);
+    text-align: left !important;
 }
 
-
-/* Paragraph spacing */
+/* Paragraph spacing (kept as you like it) */
 .blog-content p {
-    margin-bottom: 18px;        /* Smaller gap between paragraphs */
+    margin-bottom: 18px;
 }
 
+/* Section headers */
 .blog-content h2,
 .blog-content h3 {
-    margin-top: 25px;      /* Much smaller than before */
-    margin-bottom: 10px;
     color: var(--green);
+    margin-top: 15px !important;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-/* Blog hero title spacing */
-.blog-hero h1 {
-    margin-bottom: 5px;         /* Tighten gap above date */
-}
-
-/* Blog post date */
+/* Blog date */
 .blog-date {
     color: var(--green);
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 30px;        /* Reduced gap before content */
+    margin-bottom: 15px !important;
     display: block;
 }
 
+/* Right-aligned image (optional) */
+.blog-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.blog-content {
+    flex: 1;
+    text-align: left !important;
+}
+
 .blog-image-right {
-    float: right;
     width: 40%;
-    margin: 0 0 0px 0px;   /* Space between image and text */
+}
+
+.blog-image-right img {
+    width: 100%;
 }
 
 
 
-/* More Posts Button */
+/* More posts button */
 .more-posts {
-    text-align: center;          /* Center the button */
-    margin: 60px 0 40px;         /* Add breathing room */
+    text-align: center;
+    margin: 60px 0 40px;
 }
 
 .more-posts .button {
-    padding: 16px 45px;          /* Larger button */
-    font-size: 1.2rem;           /* More prominent text */
-    font-weight: 600;            /* Stronger presence */
-    border-width: 2px;           /* Thicker border */
+    padding: 16px 45px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-width: 2px;
 }
-
-
-
-
 /* ---- Pagination ---- */
 
 .pagination {
