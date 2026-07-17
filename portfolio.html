@@ -102,342 +102,9 @@
 
 
 
-<div class="portfolio-grid">
-
-
-
-
-
-<!-- PROJECT 1 -->
-
-
-<a href="projects/project1.html" class="portfolio-card">
-
-
-    <img src="images/project1.jpg"
-    alt="Project 1">
-
-
-    <div class="portfolio-info">
-
-
-        <h2>
-            Dark Angels Bolter
-        </h2>
-
-
-        <p>
-            First full model using the Blender pipeline.
-        </p>
-
-
-        <div class="portfolio-tags">
-
-            <span>
-                Blender
-            </span>
-
-            <span>
-                Substance Painter
-            </span>
-
-            <span>
-                Prop Model
-            </span>
-
-            <span>
-                Weapon Model
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-</a>
-
-
-
-
-
-
-
-<!-- PROJECT 2 -->
-
-
-<a href="projects/project2.html" class="portfolio-card">
-
-
-    <img src="images/project2.jpg"
-    alt="Project 2">
-
-
-    <div class="portfolio-info">
-
-
-        <h2>
-            Red Menace: Beyond the Threshold
-        </h2>
-
-
-        <p>
-            A detailed enviroment showcasing VFX, texturing and modular set creation and utilisation with a heavy focus on PBR materials and atmospheric storytelling.
-        </p>
-
-
-        <div class="portfolio-tags">
-
-            <span>
-                Environment Art
-            </span>
-
-            <span>
-                Substance Painter
-            </span>
-
-            <span>
-                Substance Designer
-            </span>
-
-            <span>
-                MA Project
-            </span>
-
-            <span>
-                Report
-            </span>
-
-            
-            <span>
-                UE5
-            </span>
-
-            
-            <span>
-                3DS Max
-            </span>
-
-            
-            <span>
-                Niagara
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-</a>
-
-
-
-
-
-
-
-<!-- PROJECT 3 -->
-
-
-<a href="projects/project3.html" class="portfolio-card">
-
-
-    <img src="images/project3.jpg"
-    alt="Project 3">
-
-
-    <div class="portfolio-info">
-
-
-        <h2>
-            Witchhunter's Ordained Rifle
-        </h2>
-
-
-        <p>
-            A weapon prop created to further develop my skills with PBR materials and texturing. 
-        </p>
-
-
-        <div class="portfolio-tags">
-
-            <span>
-                3DS Max
-            </span>
-
-
-            <span>
-                Marmoset Toolbag
-            </span>
-
-            <span>
-                Substance Painter
-            </span>
-
-            <span>
-                Substance Designer
-            </span>
-
-            <span>
-                MA Project
-            </span>
-
-            <span>
-                Prop Model
-            </span>
-
-            <span>
-                Weapon Model
-            </span>
-
-
-        </div>
-
-
-    </div>
-
-
-</a>
-
-
-
-
-
-
-
-<!-- PROJECT 4 -->
-
-
-<a href="projects/project4.html" class="portfolio-card">
-
-
-    <img src="images/project4.jpg"
-    alt="Project 4">
-
-
-    <div class="portfolio-info">
-
-
-        <h2>
-            Vault 101 - Reimagined
-        </h2>
-
-
-        <p>
-            A modular envrioment recreating the opening scenes from Fallout 3.
-        </p>
-
-
-        <div class="portfolio-tags">
-
-            <span>
-                Environment
-            </span>
-
-            <span>
-                Quixel
-            </span>
-
-            <span>
-                Substance Painter
-            </span>
-
-            <span>
-                UE4
-            </span>
-
-            <span>
-                3DS Max
-            </span>
-
-            <span>
-                Niagara
-            </span>
-            
-            <span>
-                BA Project
-            </span>
-
-
-        </div>
-
-
-    </div>
-
-
-</a>
-
-
-
-
-
-
-
-<!-- PROJECT 5 -->
-
-
-<a href="projects/project5.html" class="portfolio-card">
-
-
-    <img src="images/project5.jpg"
-    alt="Project 5">
-
-
-    <div class="portfolio-info">
-
-
-        <h2>
-            Arch Viz - Dining Room and Social Area
-        </h2>
-
-
-        <p>
-            An early project from my BA wherein I created an environment with for use as an arch viz artefact.
-        </p>
-
-
-        <div class="portfolio-tags">
-
-            <span>
-                Enviroment
-            </span>
-
-            <span>
-                Arch Viz
-            </span>
-
-            <span>
-                UE4
-            </span>
-
-            <span>
-                Substance Painter
-            </span>
-
-            <span>
-                Substance Designer
-            </span>
-
-            <span>
-                BA Project
-            </span>
-
-
-
-        </div>
-
-
-    </div>
-
-
-</a>
-
-
-
-
-
-
+<div class="portfolio-grid" id="portfolio-grid">
+    <!-- Cards are injected here by JavaScript. See js/portfolio-projects.js
+         to add, remove or reorder projects. -->
 </div>
 
 
@@ -462,6 +129,66 @@
 </footer>
 
 
+
+
+<!-- =====================================================================
+     PORTFOLIO RENDER SCRIPT
+
+     Project data lives in js/portfolio-projects.js - that's the single
+     file to edit when adding a new project. This script just renders
+     every project as a card, in the order they appear there.
+===================================================================== -->
+
+<script src="js/portfolio-projects.js"></script>
+
+<script>
+
+    const portfolioGrid = document.getElementById('portfolio-grid');
+
+    function parseProjectDate(dateStr) {
+        const [day, month, year] = dateStr.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    const sortedProjects = [...projects].sort((a, b) => parseProjectDate(b.date) - parseProjectDate(a.date));
+
+    sortedProjects.forEach(project => {
+        const card = document.createElement('a');
+        card.href = project.link;
+        card.className = 'portfolio-card';
+
+        const img = document.createElement('img');
+        img.src = project.image;
+        img.alt = project.title;
+
+        const info = document.createElement('div');
+        info.className = 'portfolio-info';
+
+        const titleEl = document.createElement('h2');
+        titleEl.textContent = project.title;
+
+        const excerptEl = document.createElement('p');
+        excerptEl.textContent = project.excerpt;
+
+        const tagsEl = document.createElement('div');
+        tagsEl.className = 'portfolio-tags';
+        (project.tags || []).forEach(tag => {
+            const tagEl = document.createElement('span');
+            tagEl.textContent = tag;
+            tagsEl.appendChild(tagEl);
+        });
+
+        info.appendChild(titleEl);
+        info.appendChild(excerptEl);
+        info.appendChild(tagsEl);
+
+        card.appendChild(img);
+        card.appendChild(info);
+
+        portfolioGrid.appendChild(card);
+    });
+
+</script>
 
 
 </body>
