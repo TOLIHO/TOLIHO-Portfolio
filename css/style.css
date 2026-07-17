@@ -38,7 +38,14 @@
 
 html {
     scroll-behavior:smooth;
-    scroll-snap-type: y mandatory;
+    /* "proximity" (not "mandatory") on purpose: mandatory forces the
+       scroll to jump straight to the next section's snap point the
+       moment a scroll gesture ends, even if this section's content
+       (e.g. the featured cards + button) hasn't fully scrolled into
+       view yet on a shorter screen - it can skip right past the
+       button. Proximity still snaps neatly when a section naturally
+       fits, but lets you keep scrolling through it when it doesn't. */
+    scroll-snap-type: y proximity;
 }
 
 body {
@@ -1171,10 +1178,11 @@ footer {
 /* Tags still exist in the markup (and show in full on portfolio.html) —
    here they're clipped to one row so a long tag list can't blow out
    the card height and break the "fits on one screen" layout. */
-.featured .portfolio-tags {
-    overflow: hidden;
-    max-height: 32px;
-}
+/* Tag count is capped in the JS render script instead of clipped here
+   with overflow/max-height - clipping mid-row was cutting pills off
+   partway through, hiding their border/colour instead of just hiding
+   the whole pill. Full markup for all tags is still in
+   portfolio-projects.js and shows in full on portfolio.html. */
 
 .featured .button {
     align-self: center;
