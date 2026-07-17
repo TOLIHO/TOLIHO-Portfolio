@@ -584,7 +584,7 @@ section {
     max-width: 900px;
     margin-left: 8%;
     text-align: left;
-    font-size: 0.96rem; /* was 1.2rem - scaled to 80%, per your request that everything on blog posts felt too zoomed in */
+    font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text);
 }
