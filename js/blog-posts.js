@@ -46,7 +46,7 @@ const posts = [
         title: "The Site is Live!",
         date: "17-07-2026",
         excerpt: "The portfolio site is live after a few days work. There's still work to do, but most fuctionality is there!",
-        image: "images/blog/Site-Live.png",
+        image: "images/blogimg/Site-Live.png",
         tags: ["Off-topic"],
         link: "blog/17-07-2026.html"
     },
