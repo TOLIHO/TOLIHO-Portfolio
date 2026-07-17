@@ -319,7 +319,7 @@ section {
 }
 
 .about-bg-blur {
-    filter:blur(10px);
+    filter:blur(0px);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
 }
