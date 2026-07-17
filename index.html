@@ -202,6 +202,12 @@
         return new Date(year, month - 1, day);
     }
 
+    function formatProjectDate(dateStr) {
+        const d = parseProjectDate(dateStr);
+        if (isNaN(d)) return dateStr;
+        return d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+    }
+
     const sortedProjects = [...projects].sort((a, b) => parseProjectDate(b.date) - parseProjectDate(a.date));
     const featuredProjects = sortedProjects.slice(0, 3);
 
@@ -217,6 +223,10 @@
         const info = document.createElement('div');
         info.className = 'portfolio-info';
 
+        const dateEl = document.createElement('span');
+        dateEl.className = 'portfolio-date';
+        dateEl.textContent = formatProjectDate(project.date);
+
         const titleEl = document.createElement('h2');
         titleEl.textContent = project.title;
 
@@ -231,6 +241,7 @@
             tagsEl.appendChild(tagEl);
         });
 
+        info.appendChild(dateEl);
         info.appendChild(titleEl);
         info.appendChild(excerptEl);
         info.appendChild(tagsEl);
