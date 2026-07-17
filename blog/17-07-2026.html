@@ -1,1179 +1,156 @@
-/* =====================================================
-   TOLIHO PORTFOLIO
-   Main Website Stylesheet
-
-   Theme:
-   Dark minimalist / games art portfolio
-
-   Main colour:
-   #00bf63
-===================================================== */
-
-
-/* =====================================================
-   GLOBAL VARIABLES
-===================================================== */
-
-:root {
-    --background: #0c0f0d;
-    --surface: #151916;
-    --surface-light: #202520;
-    --text: #e8ebe8;
-    --muted: #9da59f;
-    --green: #00bf63;
-    --green-dark: #008f45;
-    --border: rgba(255,255,255,0.08);
-}
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html {
-    scroll-behavior:smooth;
-}
-
-body {
-    background:var(--background);
-    color:var(--text);
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    line-height:1.6;
-}
-
-a {
-    text-decoration:none;
-    color:inherit;
-}
-
-img {
-    max-width:100%;
-    display:block;
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-header {
-    position:relative;
-}
-
-nav {
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:30px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background: rgba(12,15,13,0.75);
-    backdrop-filter:blur(15px);
-    border-bottom: 1px solid var(--border);
-    z-index:100;
-}
-
-.logo img {
-    width:150px;
-    height:auto;
-}
-
-.logo span {
-    color:var(--green);
-}
-
-.links {
-    display:flex;
-    gap:35px;
-}
-
-.links a {
-    color:var(--muted);
-    transition:.3s;
-}
-
-.links a:hover {
-    color:var(--green);
-}
-
-.menu-toggle {
-    display:none;
-}
-
-.hamburger {
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    cursor:pointer;
-    z-index:200;
-}
-
-.hamburger span {
-    width:28px;
-    height:2px;
-    background:var(--text);
-    transition:.3s;
-}
-
-
-/* =====================================================
-   HERO SECTION
-===================================================== */
-
-.hero {
-    position:relative;
-    overflow:hidden;
-    min-height:100vh;
-    padding: 150px 8% 100px;
-    display:flex;
-    align-items:center;
-    background: radial-gradient(
-        circle at 80% 20%,
-        rgba(0,191,99,.18),
-        transparent 40%
-    );
-}
-
-.hero-bg {
-    position:absolute;
-    inset:0;
-    z-index:0;
-}
-
-.hero-bg img {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.hero-bg-blur {
-    filter:blur(10px);
-    transform:scale(1.1);
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
-    mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
-}
-
-.hero-content {
-    position:relative;
-    z-index:1;
-    max-width:900px;
-}
-
-.eyebrow {
-    color:var(--green);
-    letter-spacing:5px;
-    font-size:.85rem;
-    font-weight:bold;
-}
-
-h1 {
-    font-size: clamp(3.5rem,7vw,7rem);
-    line-height:.95;
-    margin: 25px 0;
-}
-
-.hero-text {
-    max-width:900px;
-    color:var(--muted);
-    font-size:1.2rem;
-}
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.button {
-    display:inline-block;
-    margin-top:40px;
-    padding: 14px 35px;
-    border: 1px solid var(--green);
-    color:var(--green);
-    transition:.3s;
-}
-
-.button:hover {
-    background:var(--green);
-    color:#000;
-}
-
-
-/* =====================================================
-   GENERAL SECTIONS
-===================================================== */
-
-section {
-    padding: 200px 8% 100px;
-}
-
-.section-header {
-    margin-bottom:50px;
-}
-
-.section-header h2 {
-    font-size:3rem;
-}
-
-.section-header p {
-    color:var(--muted);
-}
-
-
-/* =====================================================
-   FEATURED PROJECT GRID
-===================================================== */
-
-.project-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-}
-
-.project-card {
-    background:var(--surface);
-    border: 1px solid var(--border);
-    overflow:hidden;
-    transition:.4s;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--green);
-}
-
-.project-image {
-    height:280px;
-    background: linear-gradient(135deg, #1c211e, #101311);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--muted);
-}
-
-.project-image img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.project-info {
-    padding:25px;
-}
-
-.project-info h3 {
-    color:var(--green);
-    margin-bottom:5px;
-}
-
-.project-info p {
-    color:var(--muted);
-}
-
-
-/* =====================================================
-   TEXT LINKS
-===================================================== */
-
-.text-link {
-    display:inline-block;
-    margin-top:40px;
-    color:var(--green);
-}
-
-.text-link:hover {
-    text-decoration:underline;
-}
-
-
-/* =====================================================
-   ABOUT SECTION
-===================================================== */
-
-.about-preview {
-    position:relative;
-    overflow:hidden;
-    background: linear-gradient(90deg, var(--surface), transparent);
-}
-
-.about-bg {
-    position:absolute;
-    inset:0;
-    z-index:0;
-}
-
-.about-bg img {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.about-bg-blur {
-    filter:blur(0px);
-    transform:scale(1.1);
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
-    mask-image: linear-gradient(to right, black 0%, black 0%, transparent 100%);
-}
-
-.about-preview-content {
-    position:relative;
-    z-index:1;
-}
-
-.about-preview h2 {
-    font-size:3rem;
-    margin-bottom:20px;
-}
-
-.about-preview p {
-    max-width:700px;
-    color:var(--muted);
-}
-
-
-/* =====================================================
-   BLOG
-===================================================== */
-
-.blog-grid {
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:30px;
-}
-
-.blog-card {
-    position:relative;
-    border: 1px solid var(--border);
-    overflow:hidden;
-    transition:.3s;
-}
-
-.blog-card:hover {
-    border-color:var(--green);
-}
-
-.blog-card-image {
-    position:relative;
-    aspect-ratio:16 / 9;
-    overflow:hidden;
-    background:var(--surface-light);
-}
-
-.blog-card-image img {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transform:scale(1.05);
-    transition:.4s;
-}
-
-
-.blog-card:hover {
-    transform:translateY(-10px);
-    border-color:var(--green);
-}
-
-
-.blog-info {
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    background: rgba(12,15,13,0.75);
-    backdrop-filter:blur(15px);
-    padding:25px 30px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.blog-info .blog-date {
-    display:block;
-    color:var(--muted);
-    font-size:.8rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-.blog-info h3 {
-    color:var(--green);
-    margin-bottom:15px;
-}
-
-.blog-info p {
-    color:var(--muted);
-}
-
-.blog-tags {
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:15px;
-}
-
-.blog-tags span {
-    border:1px solid var(--green);
-    color:var(--green);
-    padding:4px 12px;
-    border-radius:20px;
-    font-size:.75rem;
-}
-
-.blog-empty {
-    grid-column:1 / -1;
-    color:var(--muted);
-    text-align:center;
-    padding:60px 0;
-}
-
-/* Blog Post Date (inside full post) */
-.blog-date {
-    color: var(--green);      /* Use your accent colour */
-    font-size: 1.2rem;        /* Make it bigger */
-    font-weight: 600;         /* Optional: make it stand out */
-    letter-spacing: 2px;      /* Matches your aesthetic */
-    text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: block;
-}
-
-
-/* ---- Filter dropdown ---- */
-
-.blog-filter {
-    margin-top:30px;
-    margin-bottom:50px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.blog-filter label {
-    color:var(--muted);
-    font-size:.9rem;
-}
-
-.blog-filter select {
-    background:var(--surface);
-    border:1px solid var(--border);
-    color:var(--text);
-    padding:10px 18px;
-    font-family:inherit;
-    font-size:.95rem;
-    cursor:pointer;
-}
-
-.blog-filter select:focus {
-    outline:none;
-    border-color:var(--green);
-}
-
-/* BLOG HERO */
-.blog-hero {
-    text-align: left;
-}
-
-/* Two-column blog post layout: text left (with margin), image right (flush).
-   Reusable — drop this class + markup into any future post that needs it. */
-.post-split-layout {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    width: 100%;
-
-    /* Cancel the global "section" left/right padding so the image
-       can sit flush against the edge; .post-text below adds its own
-       margin back in on the left only. */
-    padding-left: 0;
-    padding-right: 0;
-
-    /* The global "section" rule adds 200px of top padding, which is
-       what pushes this block so far below the date. Pull it in. */
-    padding-top: 40px;
-}
-
-.post-text {
-    flex: 1;
-    max-width: 900px;
-    margin-left: 8%;
-    text-align: left;
-    font-size: 1.2rem;
-    line-height: 1.7;
-    color: var(--text);
-}
-
-.post-text h2 {
-    font-size: 2.5rem;
-    color: var(--green);
-    margin-bottom: 25px;
-}
-
-.post-text p {
-    margin-bottom: 25px;
-}
-
-.post-text p:last-child {
-    margin-bottom: 0;
-}
-
-.post-image {
-    width: 40%;
-    margin: 0;
-}
-
-.post-image img {
-    width: 100%;
-    display: block;
-}
-
-@media(max-width:900px){
-    .post-split-layout {
-        flex-direction: column;
-        padding-left: 8%;
-        padding-right: 8%;
-        padding-top: 30px;
-    }
-    .post-text {
-        margin-left: 0;
-        max-width: none;
-    }
-    .post-image {
-        width: 100%;
-    }
-}
-
-
-/* More posts button */
-.more-posts {
-    text-align: center;
-    margin: 60px 0 40px;
-}
-
-.more-posts .button {
-    padding: 16px 45px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-width: 2px;
-}
-/* ---- Pagination ---- */
-
-.pagination {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-    margin-top:70px;
-}
-
-.pagination button {
-    background:transparent;
-    border:1px solid var(--green);
-    color:var(--green);
-    padding:12px 28px;
-    font-family:inherit;
-    font-size:.95rem;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.pagination button:hover:not(:disabled) {
-    background:var(--green);
-    color:#000;
-}
-
-.pagination button:disabled {
-    border-color:var(--border);
-    color:var(--muted);
-    cursor:not-allowed;
-}
-
-.pagination .page-label {
-    color:var(--muted);
-    font-size:.9rem;
-    white-space:nowrap;
-}
-
-@media(max-width:900px){
-    .blog-grid {
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* ==========================================
-   CONTACT PAGE
-========================================== */
-
-.contact-page {
-    background:var(--green);
-    padding:160px 5vw 120px;
-}
-
-.contact-container {
-    max-width:1200px;
-    margin:auto;
-}
-
-.contact-container h1 {
-    color:white;
-    text-align:center;
-    margin:25px 0;
-}
-
-.contact-container .eyebrow {
-    text-align:center;
-    color:white;
-}
-
-.contact-intro {
-    color:white;
-    text-align:center;
-    max-width:700px;
-    margin:0 auto 50px;
-}
-
-/* FORM BOX */
-
-.contact-form {
-    background:var(--surface);
-    padding:50px;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,0.1);
-    box-shadow:0 20px 60px rgba(0,0,0,0.25);
-}
-
-.form-row {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.form-group {
-    display:flex;
-    flex-direction:column;
-    margin-bottom:30px;
-}
-
-.form-group label {
-    margin-bottom:10px;
-    color:var(--text);
-}
-
-.form-group input,
-.form-group textarea {
-    background:#0c0f0d;
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:12px;
-    padding:18px;
-    color:white;
-    font-family:inherit;
-    font-size:1rem;
-}
-
-.form-group textarea {
-    min-height:200px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline:none;
-    border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(0,191,99,0.2);
-}
-
-.contact-form .button {
-    border-radius:12px;
-    cursor:pointer;
-}
-
-@media(max-width:800px){
-    .form-row {
-        grid-template-columns:1fr;
-    }
-    .contact-form {
-        padding:30px;
-    }
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-    padding: 40px 8%;
-    border-top: 1px solid var(--border);
-    color:#666;
-}
-
-/* ==========================================
-   ABOUT PAGE
-========================================== */
-
-.about-page {
-    padding:160px 5vw 100px;
-}
-
-.about-container {
-    display:grid;
-    grid-template-columns:55% 45%;
-    width:100%;
-    gap:40px;
-    align-items:stretch;
-}
-
-.about-content {
-    display:flex;
-    flex-direction:column;
-    padding-left:5vw;
-    max-width:850px;
-}
-
-.about-content p {
-    margin-bottom:35px;
-    line-height:1.8;
-}
-
-.software-section {
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-}
-
-.software-section img {
-    width:350px;
-    height:auto;
-}
-
-.about-feature-image {
-    display:flex;
-    margin-right:40px;
-}
-
-.about-feature-image img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-@media(max-width:900px){
-    .about-page {
-        padding:140px 8% 80px;
-    }
-    .about-container {
-        grid-template-columns:1fr;
-        position:relative;
-    }
-    .about-content {
-        padding-left:0;
-        position:relative;
-        z-index:1;
-    }
-    .about-feature-image {
-        position:absolute;
-        inset:0;
-        margin:0;
-        z-index:0;
-        opacity:.18;
-        pointer-events:none;
-    }
-    .about-feature-image img {
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        filter:blur(12px);
-    }
-}
-
-/* ==========================================
-   CONTACT BANNER
-========================================== */
-
-.contact-banner {
-    background:#00bf63;
-    width:100%;
-    padding:70px 8%;
-    text-align:center;
-}
-
-.contact-banner h2 {
-    color:#ffffff;
-    font-size:3rem;
-    margin-bottom:20px;
-}
-
-.contact-banner a {
-    color:#ffffff;
-    font-size:1.5rem;
-    font-weight:800;
-}
-
-.contact-banner a:hover {
-    text-decoration:underline;
-}
-
-/* ==========================================
-   CV PAGE
-========================================== */
-
-.cv-page {
-    padding:160px 8% 100px;
-}
-
-.cv-header {
-    margin-bottom:70px;
-    max-width:750px;
-}
-
-.cv-header h1 {
-    font-size:clamp(2.8rem,5vw,4.5rem);
-    margin:15px 0 20px;
-}
-
-.cv-header p {
-    color:var(--muted);
-    font-size:1.1rem;
-    margin-bottom:30px;
-}
-
-.cv-container {
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:60px;
-    align-items:start;
-}
-
-/* ---- Main column ---- */
-
-.cv-block {
-    margin-bottom:60px;
-}
-
-.cv-block:last-child {
-    margin-bottom:0;
-}
-
-.cv-block h2 {
-    font-size:1.7rem;
-    color:var(--green);
-    margin-bottom:28px;
-    padding-bottom:12px;
-    border-bottom:1px solid var(--border);
-}
-
-.experience-item,
-.project-item,
-.edu-item {
-    margin-bottom:32px;
-}
-
-.experience-item:last-child,
-.project-item:last-child,
-.edu-item:last-child {
-    margin-bottom:0;
-}
-
-.exp-role {
-    font-weight:700;
-    font-size:1.1rem;
-    color:var(--text);
-    display:block;
-}
-
-.exp-meta {
-    color:var(--green);
-    font-size:.9rem;
-    display:block;
-    margin:4px 0 14px;
-}
-
-.cv-block ul {
-    list-style:none;
-}
-
-.cv-block li {
-    position:relative;
-    padding-left:22px;
-    margin-bottom:10px;
-    color:var(--muted);
-}
-
-.cv-block li:last-child {
-    margin-bottom:0;
-}
-
-.cv-block li::before {
-    content:"—";
-    position:absolute;
-    left:0;
-    color:var(--green);
-}
-
-/* ---- Sidebar ---- */
-
-.cv-sidebar .cv-block {
-    background:var(--surface);
-    border:1px solid var(--border);
-    padding:30px;
-    margin-bottom:30px;
-}
-
-.cv-sidebar .cv-block:last-child {
-    margin-bottom:0;
-}
-
-.cv-sidebar h2 {
-    font-size:1.15rem;
-    margin-bottom:20px;
-    padding-bottom:0;
-    border-bottom:none;
-}
-
-.cv-sidebar p,
-.cv-sidebar a {
-    color:var(--muted);
-    font-size:.95rem;
-}
-
-.cv-sidebar a:hover {
-    color:var(--green);
-    text-decoration:underline;
-}
-
-.contact-block p {
-    margin-bottom:10px;
-}
-
-.contact-block p:last-child {
-    margin-bottom:0;
-}
-
-.skill-tags {
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.skill-tags span {
-    background:var(--surface-light);
-    border:1px solid var(--border);
-    padding:6px 14px;
-    font-size:.85rem;
-    color:var(--muted);
-}
-
-.software-group {
-    margin-bottom:18px;
-}
-
-.software-group:last-child {
-    margin-bottom:0;
-}
-
-.software-group h4 {
-    color:var(--text);
-    font-size:.9rem;
-    margin-bottom:8px;
-}
-
-.software-group p {
-    font-size:.9rem;
-    margin-bottom:0;
-}
-
-@media(max-width:900px){
-    .cv-page {
-        padding:140px 8% 80px;
-    }
-    .cv-container {
-        grid-template-columns:1fr;
-    }
-}
-
-/* ==========================================
-   PORTFOLIO CARDS
-========================================== */
-
-.portfolio-grid {
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
-}
-
-.portfolio-card {
-    background:var(--surface);
-    border:1px solid var(--border);
-    overflow:hidden;
-    text-decoration:none;
-    transition:.4s;
-}
-
-.portfolio-card:hover {
-    transform:translateY(-10px);
-    border-color:var(--green);
-}
-
-.portfolio-card img {
-    width:100%;
-    aspect-ratio:1 / 1;
-    object-fit:cover;
-}
-
-.portfolio-info {
-    padding:25px;
-}
-
-.portfolio-info h2 {
-    color:var(--green);
-    font-size:1.5rem;
-    margin-bottom:10px;
-}
-
-.portfolio-info p {
-    color:var(--muted);
-    margin-bottom:20px;
-}
-
-.portfolio-tags {
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.portfolio-tags span {
-    border:1px solid var(--green);
-    color:var(--green);
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:.8rem;
-}
-
-/* ==========================================
-   PORTFOLIO MOBILE
-========================================== */
-
-@media(max-width:900px){
-    .portfolio-grid {
-        grid-template-columns:1fr;
-    }
-}
-
-
-/* =====================================================
-   MOBILE SUPPORT
-===================================================== */
-
-@media(max-width:800px){
-
-    /* -----------------------------------------------------------------
-       HOW TO ADJUST THE HOMEPAGE BACKGROUND IMAGE ON MOBILE
-
-       "100px" below controls how far RIGHT the image is shifted before
-       it gets cropped to fit the phone screen.
-         - Bigger number (e.g. 200px) = shows more of the right side
-           of the image, less of the left
-         - Smaller number (e.g. 0px) = shows the far-left edge of
-           the image
-       Just change the number, save, and refresh to see the result.
-    ----------------------------------------------------------------- */
-
-    .hero-bg img {
-        object-position:left 100px center;
-    }
-
-    .hero-bg img:not(.hero-bg-blur) {
-        display:none;
-    }
-
-    .hero-bg-blur {
-        -webkit-mask-image:none;
-        mask-image:none;
-    }
-
-    nav {
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:center;
-    }
-
-    .hamburger {
-        display:flex;
-    }
-
-    .portfolio-grid {
-        grid-template-columns:1fr;
-    }
-
-    .links {
-        position:fixed;
-        top:0;
-        right:0;
-        height:100vh;
-        width:70%;
-        max-width:300px;
-        padding:100px 40px;
-        background:var(--surface);
-        border-left:1px solid var(--border);
-        box-shadow:-20px 0 60px rgba(0,0,0,0.4);
-        flex-direction:column;
-        flex-wrap:nowrap;
-        align-items:flex-start;
-        justify-content:flex-start;
-        gap:30px;
-        transform:translateX(100%);
-        transition:.4s ease;
-        z-index:150;
-    }
-
-    .links a {
-        font-size:1.1rem;
-    }
-
-    .menu-toggle:checked ~ .links {
-        transform:translateX(0);
-    }
-
-    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform:translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity:0;
-    }
-
-    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform:translateY(-7px) rotate(-45deg);
-    }
-
-    h1 {
-        font-size:3rem;
-    }
-
-    section {
-        padding:60px 8% 60px;
-    }
-
-    header + section {
-        padding-top:160px;
-    }
-
-    .hero {
-        min-height:auto;
-        align-items:flex-start;
-    }
-
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Site is Live!</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- ===========================
+     NAVIGATION
+=========================== -->
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/toliho-logo.png" alt="Toliho">
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span><span></span><span></span>
+        </label>
+
+        <div class="links">
+            <a href="../portfolio.html">Portfolio</a>
+            <a href="../cv.html">CV</a>
+            <a href="../blog.html">Blog</a>
+            <a href="../about.html">About/Contact</a>
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- ===========================
+     HERO
+=========================== -->
+
+<section class="blog-hero">
+    <img src="../images/blogimg/Site-Live.png" alt="">
+    <h1>The Site is Live!</h1>
+    <p class="blog-date">17 July 2026</p>
+</section>
+
+
+
+<!-- ===========================
+     BLOG CONTENT (FIXED LAYOUT)
+=========================== -->
+
+<section class="post-split-layout">
+
+    <!-- LEFT COLUMN: TEXT -->
+    <div class="post-text">
+
+        <h2>Section Header</h2>
+
+        <p>
+           Over the past few days I've been working to get this site up and running. It's been a difficult process to navigate, testing several options for site hosting and creation. I tried the standard options like Wix or Squarespace but both were prohibitively expensive and weren't fit for purpose. I ended up opting for GitHub pages, which allows me to use HTML for the site.
+           With the assistance of AI to guide me through the process I've got the site to a decent standard, and learned about website creation in the process. 
+        </p>
+
+        <p>
+           I've used a little HTML in the past when creating a DND official style source book, but website creation is very different. There are so many factors to consider when making a site and so many creative choices to make in it's presentation especially when compared to creating a DND source book where those stylistic choices are essentially made for you.
+           The benefit of having used that rudimentary HTML in the past is that I'm able to make modifications to the site myself without assitance, while having the basic knowledge to use informed prompts in the AI. While I'm generally against using AI for most things, I think in this case it was beneficial as it allowed me to continue my focus on learning C# in Unity, without confusing me with three new languages.
+        </p>
+
+        <p>
+           I'll be trying to update this blog once every week or two. I don't want to commit to weekly updates since it takes time to create the posts and write up what I've done. Time is valuable and I need to focus myself on upskilling for the next few months. For the next few weeks I'll be continuing with the Unity Junior Programmer Course and will also be investigating the landscaping software Gaea to see how it can be imbedded into my workflows.
+        </p>
+
+        <p>
+           I've also considered creating an accompanying YouTube channel to this blog, but I'll have to see if time allows for that. I hope anyone reading this enjoys the site, and potentially gains some insight into my processes, or general thoughts.
+        </p>
+
+
+        <!-- ===========================
+             TEMPLATES — copy/paste whichever block you need
+             into the post-text column above. These are commented
+             out so they don't render.
+        ============================ -->
+
+        <!--
+        TEXT BLOCK TEMPLATE
+        <div class="blog-text-block">
+            <h2>Section Header</h2>
+            <p>Your paragraph text goes here. Add as many paragraphs as you want.</p>
+        </div>
+        -->
+
+        <!--
+        IMAGE BLOCK TEMPLATE
+        <div class="blog-image-block">
+            <img src="../images/example.jpg" alt="Description">
+            <p class="caption">Optional caption text.</p>
+        </div>
+        -->
+
+        <!--
+        QUOTE BLOCK TEMPLATE
+        <div class="blog-quote">
+            <p>"A highlighted quote, thought, or important note."</p>
+        </div>
+        -->
+
+        <!--
+        GALLERY TEMPLATE
+        <div class="blog-gallery">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/img2.jpg" alt="">
+            <img src="../images/img3.jpg" alt="">
+        </div>
+        -->
+
+        <!--
+        SUBHEADER TEMPLATE
+        <div class="blog-text-block">
+            <h3>Subheader</h3>
+            <p>Supporting text goes here.</p>
+        </div>
+        -->
+
+    </div>
+
+    <!-- RIGHT COLUMN: IMAGE -->
+    <div class="post-image">
+        <img src="../images/blogimg/bp1right.png" alt="">
+    </div>
+
+</section>
+
+
+
+<!-- ===========================
+     MORE POSTS BUTTON
+=========================== -->
+
+<div class="more-posts">
+    <a href="../blog.html" class="button">More Posts</a>
+</div>
+
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+<footer>
+    <p>© Toliho — Tom Oliver Hockenhull</p>
+</footer>
+
+</body>
+</html>
