@@ -38,6 +38,7 @@
 
 html {
     scroll-behavior:smooth;
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -1075,6 +1076,89 @@ footer {
 
 
 /* =====================================================
+   INDEX PAGE — SCROLL-SNAP SECTIONS
+
+   Each of these sections is meant to fill one screen so
+   scrolling "snaps" from one to the next. Only .featured
+   needed real surgery (the cards were too tall to fit);
+   .about-preview and .latest-blog just get centered.
+
+   Card-size overrides here are scoped to ".featured …" so
+   portfolio.html — which reuses the same .portfolio-card /
+   .portfolio-info / .portfolio-tags classes — is untouched.
+===================================================== */
+
+.hero,
+.featured,
+.about-preview,
+.latest-blog,
+.contact-banner {
+    scroll-snap-align: start;
+}
+
+.featured {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px 8% 60px;
+}
+
+.featured .section-header {
+    margin-bottom: 30px;
+}
+
+.featured .portfolio-grid {
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+/* Shorter image + tighter info block so 3 cards + header + button
+   fit in one screen instead of needing to scroll within the section */
+.featured .portfolio-card img {
+    aspect-ratio: 16 / 10;
+}
+
+.featured .portfolio-info {
+    padding: 18px;
+}
+
+.featured .portfolio-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.featured .portfolio-info p {
+    margin-bottom: 10px;
+}
+
+/* Tags still exist in the markup (and show in full on portfolio.html) —
+   here they're clipped to one row so a long tag list can't blow out
+   the card height and break the "fits on one screen" layout. */
+.featured .portfolio-tags {
+    overflow: hidden;
+    max-height: 32px;
+}
+
+.featured .button {
+    align-self: center;
+}
+
+.about-preview {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.latest-blog {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* =====================================================
    MOBILE SUPPORT
 ===================================================== */
 
@@ -1175,6 +1259,21 @@ footer {
     .hero {
         min-height:auto;
         align-items:flex-start;
+    }
+
+    /* Scroll-snap works well on desktop where the featured cards fit
+       one screen, but on mobile the stacked content per section is
+       usually taller than the viewport — forcing a snap there would
+       just fight the scroll instead of helping it. */
+    html {
+        scroll-snap-type: none;
+    }
+
+    .featured,
+    .about-preview,
+    .latest-blog {
+        min-height: auto;
+        display: block;
     }
 
 }
