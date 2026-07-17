@@ -38,14 +38,17 @@
 
 html {
     scroll-behavior:smooth;
-    /* "proximity" (not "mandatory") on purpose: mandatory forces the
-       scroll to jump straight to the next section's snap point the
-       moment a scroll gesture ends, even if this section's content
-       (e.g. the featured cards + button) hasn't fully scrolled into
-       view yet on a shorter screen - it can skip right past the
-       button. Proximity still snaps neatly when a section naturally
-       fits, but lets you keep scrolling through it when it doesn't. */
-    scroll-snap-type: y proximity;
+    /* Mandatory = a real "forced" snap: once a scroll gesture ends,
+       the page always lands on the next/previous section, never
+       stopping halfway. This only works cleanly because every
+       snapped section below is now sized (via clamp()/vh) to
+       actually fit inside one viewport - including on a 1080p
+       screen - so mandatory snapping never has to cut content off
+       to make it land. If you ever add a new snapped section with
+       content that might not fit one screen, give it the same
+       vh-based treatment as .featured/.latest-blog below instead of
+       switching this back to "proximity". */
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -1101,6 +1104,20 @@ footer {
         min-height: auto;
     }
 
+    /* .featured .portfolio-grid switched from CSS grid to flex above
+       so cards could be sized by viewport height on desktop - that
+       vh-based width no longer makes sense once snap is off and
+       everything stacks, so force full-width single column here,
+       matching how it already behaved before. */
+    .featured .portfolio-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .featured .portfolio-card {
+        width: 100%;
+    }
+
     html {
         scroll-snap-type: none;
     }
@@ -1150,12 +1167,29 @@ footer {
 
 /* Cards stay perfectly square (same as portfolio.html — some of
    your images have text baked in, so the aspect ratio can't move).
-   To still fit 3 cards + header + button on one screen, the grid
-   itself is capped narrower instead, which shrinks the squares
-   proportionally rather than cropping them. */
+
+   The old approach capped the GRID's width, which shrinks the
+   squares based on horizontal space - but horizontal space barely
+   changes between a 1080p and a 1440p/2K monitor at the same
+   browser width, so the cards stayed just as tall and blew past
+   the shorter 1080p viewport. Sizing the card itself off viewport
+   HEIGHT (34vh) instead fixes that: less vertical room -> smaller
+   squares, automatically, with no separate breakpoint needed. */
 .featured .portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 25px;
     gap: 20px;
+}
+
+.featured .portfolio-card {
+    /* min 200px / max 340px keep this sane on extreme window sizes;
+       30vh is the number to nudge if you want the cards bigger or
+       smaller in general - raise it and re-check on a 1080p screen
+       that the button at the bottom of .featured is still visible. */
+    flex: 0 0 auto;
+    width: clamp(200px, 30vh, 340px);
 }
 
 .featured .portfolio-info {
@@ -1204,6 +1238,67 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: safe center;
+}
+
+/* Same reasoning as .featured above: the 16:9 blog preview images
+   were sized off the grid column's WIDTH, so they were just as
+   likely to run too tall on a 1080p screen as the featured squares
+   were. Capping the height by vh instead keeps this section
+   fitting one screen too, so mandatory snap can't get stuck here.
+   Scoped to .latest-blog so blog.html's full blog grid is untouched. */
+.latest-blog .blog-card-image {
+    aspect-ratio: auto;
+    height: clamp(160px, 28vh, 320px);
+}
+
+
+/* =====================================================
+   SCROLL DOT NAVIGATION (index.html only)
+
+   Needs matching markup + js/scroll-dots.js - see the setup notes
+   you were given alongside this file. Each <a class="scroll-dot">
+   should point to the id of the section it represents; the JS just
+   toggles .active on whichever dot's section is in view.
+===================================================== */
+
+.scroll-dots {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 150;
+}
+
+.scroll-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--muted);
+    background: transparent;
+    transition: .3s;
+}
+
+.scroll-dot:hover {
+    border-color: var(--green);
+}
+
+.scroll-dot.active {
+    background: var(--green);
+    border-color: var(--green);
+    transform: scale(1.3);
+}
+
+@media(max-width:900px){
+    /* Snap is switched off on mobile anyway (see MOBILE SUPPORT
+       below), so a "which section am I snapped to" indicator has
+       nothing meaningful to show here. */
+    .scroll-dots {
+        display: none;
+    }
 }
 
 
