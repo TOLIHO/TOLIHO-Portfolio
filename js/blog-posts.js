@@ -43,12 +43,12 @@
 const posts = [
 
     {
-        title: "This is a test that tells me the blog code is working!",
-        date: "14-07-2026",
-        excerpt: "If you can see this, the JS file and new HTML is working!",
-        image: "images/blog/placeholder1.jpg",
-        tags: ["Art"],
-        link: "blog/placeholder1.html"
+        title: "The Site is Live!",
+        date: "17-07-2026",
+        excerpt: "The portfolio site is live after a few days work. There's still work to do, but most fuctionality is there!",
+        image: "images/blog/Site-Live.png",
+        tags: ["Off-topic"],
+        link: "blog/17-07-2026.html"
     },
     {
         title: "Consectetur Adipiscing Elit",
