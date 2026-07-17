@@ -1070,6 +1070,24 @@ footer {
     .portfolio-grid {
         grid-template-columns:1fr;
     }
+
+    /* .portfolio-grid stacks to 1 column here at 900px, but scroll-snap
+       (in the MOBILE SUPPORT block below) didn't switch off until
+       800px. In that 800-900px gap the featured cards were stacking
+       into a single tall column while mandatory scroll-snap still
+       locked the section to one screen-height slot - so the bottom
+       card(s) and the "View all projects" button got snapped past
+       and were never reachable/visible. Turning snap off at the same
+       900px breakpoint as the grid stack keeps the two in sync. */
+    .featured,
+    .about-preview,
+    .latest-blog {
+        min-height: auto;
+    }
+
+    html {
+        scroll-snap-type: none;
+    }
 }
 
 
@@ -1100,7 +1118,12 @@ footer {
     flex-direction: column;
     /* "safe center" centers when there's room, but falls back to
        start-alignment instead of overflowing off both edges when
-       the viewport's too short (e.g. 1080p) for the content to fit */
+       the viewport's too short (e.g. 1080p) for the content to fit.
+       Safari versions before 18 don't recognise "safe"/"unsafe" at
+       all and drop the whole declaration - the plain "center" line
+       above is a fallback those browsers fall back to instead of
+       losing centering completely. */
+    justify-content: center;
     justify-content: safe center;
     padding: 130px 8% 50px;
 }
