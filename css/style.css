@@ -1184,12 +1184,26 @@ footer {
 }
 
 .featured .portfolio-card {
-    /* min 200px / max 340px keep this sane on extreme window sizes;
-       30vh is the number to nudge if you want the cards bigger or
+    /* Tag pills are hidden below on these homepage cards specifically,
+       which frees up enough vertical room to size these much bigger
+       than the portfolio.html versions and still fit one 1080p screen.
+       min 260px / max 460px keep this sane on extreme window sizes;
+       38vh is the number to nudge if you want the cards bigger or
        smaller in general - raise it and re-check on a 1080p screen
        that the button at the bottom of .featured is still visible. */
     flex: 0 0 auto;
-    width: clamp(200px, 30vh, 340px);
+    width: clamp(260px, 38vh, 460px);
+}
+
+/* Homepage cards drop the tag pills entirely to buy back the
+   vertical space spent above on bigger images - the full tag list
+   still shows on portfolio.html, which doesn't use this scope. */
+.featured .portfolio-tags {
+    display: none;
+}
+
+.featured .portfolio-info p {
+    margin-bottom: 0;
 }
 
 .featured .portfolio-info {
@@ -1262,12 +1276,24 @@ footer {
 ===================================================== */
 
 .scroll-dots {
+    /* Explicitly resetting width/padding/background/backdrop-filter/
+       border-bottom/justify-content below - without them, this <nav>
+       inherits those properties from the site header's generic
+       "nav { ... }" rule up top (same tag name), which is what was
+       turning this into a full-width blurred bar instead of a slim
+       column pinned to the right edge. */
     position: fixed;
     top: 50%;
     right: 30px;
     transform: translateY(-50%);
+    width: auto;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: none;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 16px;
     z-index: 150;
