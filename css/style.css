@@ -482,6 +482,41 @@ section {
     border-color:var(--green);
 }
 
+.blog-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 120px 0;
+    font-size: 1.15rem;          /* Bigger text */
+    line-height: 1.8;            /* More readable */
+    color: var(--muted);
+}
+
+.blog-content p {
+    margin-bottom: 25px;         /* Space between paragraphs */
+}
+
+.blog-content h2,
+.blog-content h3 {
+    color: var(--green);
+    margin-top: 60px;            /* Reduce giant gap under title */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.blog-hero h1 {
+    margin-bottom: 10px;         /* Tighten gap above date */
+}
+
+.blog-date {
+    color: var(--green);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;         /* Space before first section */
+    display: block;
+}
+
 
 /* ---- Pagination ---- */
 
