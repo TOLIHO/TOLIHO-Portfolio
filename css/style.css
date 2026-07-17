@@ -487,47 +487,52 @@ section {
     text-align: left;
 }
 
-.blog-content-wrapper {
+/* Two-column blog post layout: text left (with margin), image right (flush).
+   Reusable — drop this class + markup into any future post that needs it. */
+.post-split-layout {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
-
-    /* Stop global section padding from centering the whole block */
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    /* Keep your nice wide layout */
     width: 100%;
+
+    /* Cancel the global "section" left/right padding so the image
+       can sit flush against the edge; .post-text below adds its own
+       margin back in on the left only. */
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.blog-content {
+.post-text {
     flex: 1;
-
-    /* ⭐ This is the margin you want on the left column */
     margin-left: 8%;
-
-    /* Keep text left-aligned */
     text-align: left;
-
     font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text);
 }
 
-.blog-image-right {
+.post-image {
     width: 40%;
-
-    /* ⭐ No margin on the right column */
     margin: 0;
-
-    /* Keep image flush-right */
-    text-align: right;
 }
 
-.blog-image-right img {
+.post-image img {
     width: 100%;
     display: block;
+}
+
+@media(max-width:900px){
+    .post-split-layout {
+        flex-direction: column;
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+    .post-text {
+        margin-left: 0;
+    }
+    .post-image {
+        width: 100%;
+    }
 }
 
 
