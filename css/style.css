@@ -584,7 +584,7 @@ section {
     max-width: 900px;
     margin-left: 8%;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 0.96rem;
     line-height: 1.7;
     color: var(--text);
 }
