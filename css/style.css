@@ -496,6 +496,63 @@ section {
     text-align: left;
 }
 
+/* Individual post pages (this file's <section class="blog-hero"> has an
+   <img>, h1 and .blog-date as direct children, no wrapper markup) get
+   the full treatment below. :has(> img) scopes ALL of it to only posts
+   that actually contain a hero image - blog.html's own plain hero
+   banner has no <img> child, so it's completely unaffected by this. */
+.blog-hero:has(> img) {
+    position: relative;
+    min-height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.blog-hero:has(> img) > img {
+    /* Full-bleed background, same pattern as .hero-bg on index - fills
+       the whole section right up to the true top of the page (behind
+       the translucent nav), instead of sitting in normal flow with
+       200px of section padding above it. */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Title + date sit in normal flow, pushed to the bottom by
+   justify-content:flex-end above. They share the exact same
+   translucency as the nav bar, with zero margin between them so the
+   two read as one continuous banner instead of two floating labels. */
+.blog-hero:has(> img) h1,
+.blog-hero:has(> img) .blog-date {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding-left: 8%;
+    padding-right: 8%;
+    background: rgba(12,15,13,0.75);
+    backdrop-filter: blur(15px);
+}
+
+.blog-hero:has(> img) h1 {
+    /* Overrides the site-wide h1 rule, which is sized for the giant
+       index hero (up to 7rem) - that's what was making post titles
+       look so oversized/zoomed-in. */
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.15;
+    padding-top: 30px;
+}
+
+.blog-hero:has(> img) .blog-date {
+    font-size: 0.96rem; /* was 1.2rem (inherited from the base .blog-date rule) - 80% */
+    padding-bottom: 30px;
+}
+
 /* Two-column blog post layout: text left (with margin), image right.
    Reusable — drop this class + markup into any future post that needs it.
    Built the same way as .about-container: a grid with align-items:stretch
@@ -507,7 +564,7 @@ section {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 24%;
     align-items: stretch;
-    gap: 40px;
+    gap: 32px; /* was 40px - scaled to ~80% along with the text below */
     width: 100%;
 
     /* Cancel the global "section" LEFT padding only, so .post-text's
@@ -520,26 +577,26 @@ section {
 
     /* The global "section" rule adds 200px of top padding, which is
        what pushes this block so far below the date. Pull it in. */
-    padding-top: 40px;
+    padding-top: 32px; /* was 40px - scaled to ~80% */
 }
 
 .post-text {
     max-width: 900px;
     margin-left: 8%;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 0.96rem; /* was 1.2rem - scaled to 80%, per your request that everything on blog posts felt too zoomed in */
     line-height: 1.7;
     color: var(--text);
 }
 
 .post-text h2 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* was 2.5rem - 80% */
     color: var(--green);
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* was 25px - 80% */
 }
 
 .post-text p {
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* was 25px - 80% */
 }
 
 .post-text p:last-child {
@@ -551,10 +608,11 @@ section {
        img's height:100% below actually resolve against something,
        so it can stretch to fill the grid row instead of collapsing
        to its own intrinsic height. margin-right matches
-       .about-feature-image's own inset from the page edge. */
+       .about-feature-image's own inset from the page edge, scaled
+       to ~80% along with everything else on this page. */
     display: flex;
     width: 100%;
-    margin: 0 40px 0 0;
+    margin: 0 32px 0 0;
 }
 
 .post-image img {
@@ -579,7 +637,7 @@ section {
         /* Stacked on mobile, height:100% has no row to stretch to
            anymore, so give it a real height the same way
            .blog-card-image does elsewhere on the site. margin reset
-           to 0 since the 40px right inset (there to keep the desktop
+           to 0 since the right inset (there to keep the desktop
            image off the page edge) would otherwise push this wider
            than 100% and cause horizontal overflow. */
         width: 100%;
@@ -596,8 +654,8 @@ section {
 }
 
 .more-posts .button {
-    padding: 16px 45px;
-    font-size: 1.2rem;
+    padding: 13px 36px; /* was 16px 45px - 80% */
+    font-size: 0.96rem; /* was 1.2rem - 80% */
     font-weight: 600;
     border-width: 2px;
 }
