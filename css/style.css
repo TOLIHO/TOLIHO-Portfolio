@@ -492,57 +492,41 @@ section {
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
+
+    /* Stop global section padding from centering the whole block */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    /* Keep your nice wide layout */
     width: 100%;
-    max-width: none;          /* let it span the full content width */
-    margin: 0;                /* stop centering */
-    padding: 60px 8% 60px;    /* keep nice side gutters */
-
-    text-align: left;
 }
-
 
 .blog-content {
     flex: 1;
+
+    /* ⭐ This is the margin you want on the left column */
+    margin-left: 8%;
+
+    /* Keep text left-aligned */
+    text-align: left;
+
     font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text);
-
-    /* Ensure text stays left */
-    text-align: left !important;
 }
 
-.blog-content p {
-    margin-bottom: 18px;
-}
-
-.blog-content h2,
-.blog-content h3 {
-    color: var(--green);
-    margin-top: 15px !important;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-/* Right column */
 .blog-image-right {
     width: 40%;
-    text-align: right; /* PNG sits flush right */
+
+    /* ⭐ No margin on the right column */
+    margin: 0;
+
+    /* Keep image flush-right */
+    text-align: right;
 }
 
 .blog-image-right img {
     width: 100%;
-    display: block;
-}
-
-
-/* Blog date */
-.blog-date {
-    color: var(--green);
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 15px !important;
     display: block;
 }
 
