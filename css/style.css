@@ -447,7 +447,7 @@ section {
     letter-spacing: 2px;      /* Matches your aesthetic */
     text-transform: uppercase;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: block;
 }
 
@@ -483,26 +483,26 @@ section {
 }
 
 .blog-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 0;            /* Less vertical padding */
-    font-size: 1.2rem;          /* Larger text */
-    line-height: 1.7;           /* More readable */
-    color: var(--text);         /* WHITE text */
+    max-width: 900px;      /* Keeps text readable */
+    margin: 0 auto;        /* Centers the whole block */
+    text-align: left;      /* Ensures text aligns left */
+    padding: 60px 0;       /* Balanced spacing */
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--text);    /* White text */
 }
+
 
 /* Paragraph spacing */
 .blog-content p {
     margin-bottom: 18px;        /* Smaller gap between paragraphs */
 }
 
-/* Section headers */
 .blog-content h2,
 .blog-content h3 {
+    margin-top: 25px;      /* Much smaller than before */
+    margin-bottom: 10px;
     color: var(--green);
-    margin-top: 40px;           /* Much smaller gap */
-    margin-bottom: 15px;
-    font-weight: 600;
 }
 
 /* Blog hero title spacing */
@@ -520,6 +520,14 @@ section {
     margin-bottom: 30px;        /* Reduced gap before content */
     display: block;
 }
+
+.blog-image-right {
+    float: right;
+    width: 40%;
+    margin: 0 0 0px 0px;   /* Space between image and text */
+}
+
+
 
 /* More Posts Button */
 .more-posts {
