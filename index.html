@@ -196,7 +196,14 @@
 <script src="js/portfolio-projects.js"></script>
 <script>
     const featuredGrid = document.getElementById('featured-portfolio-grid');
-    const featuredProjects = projects.slice(0, 3);
+
+    function parseProjectDate(dateStr) {
+        const [day, month, year] = dateStr.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    const sortedProjects = [...projects].sort((a, b) => parseProjectDate(b.date) - parseProjectDate(a.date));
+    const featuredProjects = sortedProjects.slice(0, 3);
 
     featuredProjects.forEach(project => {
         const card = document.createElement('a');
