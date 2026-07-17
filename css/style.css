@@ -380,9 +380,11 @@ section {
 }
 
 
-.blog-card:hover .blog-card-image img {
-    filter:blur(1px);
+.blog-card:hover {
+    transform:translateY(-10px);
+    border-color:var(--green);
 }
+
 
 .blog-info {
     position:absolute;
@@ -435,6 +437,18 @@ section {
     color:var(--muted);
     text-align:center;
     padding:60px 0;
+}
+
+/* Blog Post Date (inside full post) */
+.blog-date {
+    color: var(--green);      /* Use your accent colour */
+    font-size: 1.2rem;        /* Make it bigger */
+    font-weight: 600;         /* Optional: make it stand out */
+    letter-spacing: 2px;      /* Matches your aesthetic */
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: block;
 }
 
 
