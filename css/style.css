@@ -158,6 +158,7 @@ nav {
 
 .hero-bg-blur {
     filter:blur(10px);
+    transform:scale(1.1);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
 }
@@ -319,7 +320,8 @@ section {
 }
 
 .about-bg-blur {
-    filter:blur(2px);
+    filter:blur(10px);
+    transform:scale(1.1);
     -webkit-mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
     mask-image: linear-gradient(to right, black 0%, black 35%, transparent 75%);
 }
@@ -1098,23 +1100,26 @@ footer {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 110px 8% 60px;
+    /* "safe center" centers when there's room, but falls back to
+       start-alignment instead of overflowing off both edges when
+       the viewport's too short (e.g. 1080p) for the content to fit */
+    justify-content: safe center;
+    padding: 130px 8% 50px;
 }
 
 .featured .section-header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
+/* Cards stay perfectly square (same as portfolio.html — some of
+   your images have text baked in, so the aspect ratio can't move).
+   To still fit 3 cards + header + button on one screen, the grid
+   itself is capped narrower instead, which shrinks the squares
+   proportionally rather than cropping them. */
 .featured .portfolio-grid {
-    gap: 24px;
-    margin-bottom: 35px;
-}
-
-/* Shorter image + tighter info block so 3 cards + header + button
-   fit in one screen instead of needing to scroll within the section */
-.featured .portfolio-card img {
-    aspect-ratio: 16 / 10;
+    max-width: 900px;
+    margin: 0 auto 25px;
+    gap: 20px;
 }
 
 .featured .portfolio-info {
@@ -1140,19 +1145,24 @@ footer {
 
 .featured .button {
     align-self: center;
+    margin-top: 15px;
 }
 
 .about-preview {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.about-preview-content .button {
+    margin-top: 30px;
 }
 
 .latest-blog {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: safe center;
 }
 
 
@@ -1271,7 +1281,6 @@ footer {
     .about-preview,
     .latest-blog {
         min-height: auto;
-        display: block;
     }
 
 }
