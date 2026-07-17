@@ -496,7 +496,7 @@ section {
     text-align: left;
 }
 
-/* Two-column blog post layout: text left (with margin), image right (flush).
+/* Two-column blog post layout: text left (with margin), image right.
    Reusable — drop this class + markup into any future post that needs it.
    Built the same way as .about-container: a grid with align-items:stretch
    so the image column fills the same height as the text column and its
@@ -510,11 +510,13 @@ section {
     gap: 40px;
     width: 100%;
 
-    /* Cancel the global "section" left/right padding so the image
-       can sit flush against the edge; .post-text below adds its own
-       margin back in on the left only. */
+    /* Cancel the global "section" LEFT padding only, so .post-text's
+       own margin-left below is the only thing controlling the text's
+       left inset. The right side intentionally keeps the section's
+       normal padding now - the previous padding-right:0 here was what
+       let the image touch the true browser edge instead of sitting in
+       the page's usual gutter like .about-container does. */
     padding-left: 0;
-    padding-right: 0;
 
     /* The global "section" rule adds 200px of top padding, which is
        what pushes this block so far below the date. Pull it in. */
@@ -548,10 +550,11 @@ section {
     /* display:flex here (same trick as .about-feature-image) lets the
        img's height:100% below actually resolve against something,
        so it can stretch to fill the grid row instead of collapsing
-       to its own intrinsic height. */
+       to its own intrinsic height. margin-right matches
+       .about-feature-image's own inset from the page edge. */
     display: flex;
     width: 100%;
-    margin: 0;
+    margin: 0 40px 0 0;
 }
 
 .post-image img {
@@ -575,9 +578,13 @@ section {
     .post-image {
         /* Stacked on mobile, height:100% has no row to stretch to
            anymore, so give it a real height the same way
-           .blog-card-image does elsewhere on the site. */
+           .blog-card-image does elsewhere on the site. margin reset
+           to 0 since the 40px right inset (there to keep the desktop
+           image off the page edge) would otherwise push this wider
+           than 100% and cause horizontal overflow. */
         width: 100%;
         aspect-ratio: 16 / 9;
+        margin: 0;
     }
 }
 
