@@ -299,7 +299,35 @@ section {
 ===================================================== */
 
 .about-preview {
+    position:relative;
+    overflow:hidden;
     background: linear-gradient(90deg, var(--surface), transparent);
+}
+
+.about-bg {
+    position:absolute;
+    inset:0;
+    z-index:0;
+}
+
+.about-bg img {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.about-bg-blur {
+    filter:blur(10px);
+    transform:scale(1.1);
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 85%);
+    mask-image: linear-gradient(to right, black 0%, black 55%, transparent 85%);
+}
+
+.about-preview-content {
+    position:relative;
+    z-index:1;
 }
 
 .about-preview h2 {
@@ -951,6 +979,18 @@ footer {
 
 @media(max-width:800px){
 
+    /* -----------------------------------------------------------------
+       HOW TO ADJUST THE HOMEPAGE BACKGROUND IMAGE ON MOBILE
+
+       "100px" below controls how far RIGHT the image is shifted before
+       it gets cropped to fit the phone screen.
+         - Bigger number (e.g. 200px) = shows more of the right side
+           of the image, less of the left
+         - Smaller number (e.g. 0px) = shows the far-left edge of
+           the image
+       Just change the number, save, and refresh to see the result.
+    ----------------------------------------------------------------- */
+
     .hero-bg img {
         object-position:left 100px center;
     }
@@ -1024,6 +1064,10 @@ footer {
     }
 
     section {
+        padding:60px 8% 60px;
+    }
+
+    header + section {
         padding-top:160px;
     }
 
