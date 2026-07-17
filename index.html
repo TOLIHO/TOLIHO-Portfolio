@@ -59,7 +59,7 @@
      favourite environment render later.
 =========================== -->
 
-<section class="hero">
+<section class="hero" id="section-hero">
     <div class="hero-bg">
         <img src="images/Welcome.gif" alt="">
         <img src="images/Welcome.gif" class="hero-bg-blur" alt="">
@@ -88,7 +88,7 @@
      on portfolio.html.
 =========================== -->
 
-<section class="featured">
+<section class="featured" id="section-featured">
     <div class="section-header">
         <h2>
             Featured Work
@@ -115,7 +115,7 @@
      about.html
 =========================== -->
 
-<section class="about-preview">
+<section class="about-preview" id="section-about">
     <div class="about-bg">
         <img src="images/about-bg.png" alt="">
         <img src="images/about-bg.png" class="about-bg-blur" alt="">
@@ -146,7 +146,7 @@
      blog.html
 =========================== -->
 
-<section class="latest-blog">
+<section class="latest-blog" id="section-blog">
     <div class="section-header">
         <h2>
             Latest Thoughts
@@ -166,7 +166,7 @@
      CONTACT CTA
 =========================== -->
 
-<section class="contact-banner">
+<section class="contact-banner" id="section-contact">
     <h2>
         Let's create something.
     </h2>
@@ -310,6 +310,23 @@
         latestGrid.appendChild(card);
     });
 </script>
+
+<!-- ===========================
+     SCROLL DOT NAVIGATION
+     Shows which snapped section you're
+     currently on. See css/style.css
+     (.scroll-dots) and js/scroll-dots.js
+=========================== -->
+
+<nav class="scroll-dots" aria-label="Page sections">
+    <a href="#section-hero" class="scroll-dot" aria-label="Welcome"></a>
+    <a href="#section-featured" class="scroll-dot" aria-label="Featured Work"></a>
+    <a href="#section-about" class="scroll-dot" aria-label="About"></a>
+    <a href="#section-blog" class="scroll-dot" aria-label="Latest Thoughts"></a>
+    <a href="#section-contact" class="scroll-dot" aria-label="Contact"></a>
+</nav>
+
+<script src="js/scroll-dots.js"></script>
 
 </body>
 </html>
