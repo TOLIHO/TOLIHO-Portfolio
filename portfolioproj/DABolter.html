@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Angels Bolter</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- ===========================
+     NAVIGATION
+     Same nav as every other page - if this file lives in a
+     subfolder (e.g. /portfolio/project-name.html), keep the "../"
+     on every link and image below, same as the blog post files.
+=========================== -->
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/toliho-logo.png" alt="Toliho">
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span><span></span><span></span>
+        </label>
+
+        <div class="links">
+            <a href="../portfolio.html">Portfolio</a>
+            <a href="../cv.html">CV</a>
+            <a href="../blog.html">Blog</a>
+            <a href="../about.html">About/Contact</a>
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- ===========================
+     HERO
+     Same full-bleed image + translucent title banner treatment as
+     .blog-hero - see the .project-hero rules in style.css. The date
+     is optional; the tags row is optional too, drop the whole
+     <div class="project-tags"> if a project doesn't have any.
+=========================== -->
+
+<section class="project-hero">
+    <img src="../images/portfolioimg/DABolter/Hero.jpg" alt="">
+    <h1>Project Title</h1>
+    <div class="project-meta">
+        <span class="project-date">25 July 2026</span>
+        <div class="project-tags">
+            <span>3DS Max</span>
+            <span>Substance Painter</span>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===========================
+     PROJECT CONTENT
+     900px centered column, same rules as .post-article on the blog
+     side but a dedicated class so changing one doesn't affect the
+     other. Add class="expandable" to any <img> you want to be
+     click-to-enlarge (needs js/lightbox.js at the bottom of this
+     file - already included below).
+=========================== -->
+
+<section class="project-article">
+
+    <h2>Section Header</h2>
+
+    <p>
+        Paragraph text goes here. Add as many paragraphs as you want.
+    </p>
+
+    <!-- Single image + caption -->
+    <figure>
+        <img src="../images/portfolio/shot-1.jpg" alt="Description" class="expandable">
+        <figcaption>Optional caption text.</figcaption>
+    </figure>
+
+    <p>
+        More paragraph text...
+    </p>
+
+    <!-- Two images side by side -->
+    <div class="image-row">
+        <figure>
+            <img src="../images/portfolio/shot-2.jpg" alt="Description" class="expandable">
+        </figure>
+        <figure>
+            <img src="../images/portfolio/shot-3.jpg" alt="Description" class="expandable">
+        </figure>
+    </div>
+
+    <div class="blog-image-block">
+      <video controls muted playsinline poster="../images/portfolioimg/shot-poster.jpg">
+        <source src="../images/portfolioimg/turntable.mp4" type="video/mp4">
+      </video>
+      <p class="caption">Optional caption text.</p>
+    </div>
+
+    <p>
+        Closing paragraph text...
+    </p>
+
+
+    <!-- ===========================
+         TEMPLATES — copy/paste whichever block you need
+         into the project-article section above.
+    ============================ -->
+
+    <!--
+    SUBHEADER TEMPLATE
+    <h2>Section Header</h2>
+    <p>Paragraph text goes here.</p>
+    -->
+
+    <!--
+    SINGLE IMAGE + CAPTION TEMPLATE
+    <figure>
+        <img src="../images/portfolio/example.jpg" alt="Description" class="expandable">
+        <figcaption>Optional caption text.</figcaption>
+    </figure>
+    -->
+
+    <!--
+    TWO IMAGES SIDE BY SIDE TEMPLATE
+    <div class="image-row">
+        <figure>
+            <img src="../images/portfolio/example-1.jpg" alt="Description" class="expandable">
+        </figure>
+        <figure>
+            <img src="../images/portfolio/example-2.jpg" alt="Description" class="expandable">
+        </figure>
+    </div>
+    -->
+
+</section>
+
+
+
+<!-- ===========================
+     MORE PROJECTS BUTTON
+     Reuses the same .more-posts styling the blog posts use - it's
+     just a centered button, nothing blog-specific about the CSS.
+=========================== -->
+
+<div class="more-posts">
+    <a href="../portfolio.html" class="button">More Projects</a>
+</div>
+
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+<footer>
+    <p>© Toliho — Tom Oliver Hockenhull - All projects are compliant with international Bird Law.</p>
+</footer>
+
+<script src="../js/lightbox.js"></script>
+
+</body>
+</html>
