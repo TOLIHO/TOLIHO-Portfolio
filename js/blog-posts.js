@@ -54,7 +54,7 @@ const posts = [
         title: "The Great Diffuser Problem",
         date: "25-07-2026",
         excerpt: "Exploring light diffusers in UE5.6",
-        image: "images/blogimg/Diffuser_lights.png",
+        image: "images/blogimg/Diffuser-lights.png",
         tags: ["Art"],
         link: "blog/25-07-2026.html"
     },
