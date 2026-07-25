@@ -51,45 +51,16 @@ const posts = [
         link: "blog/17-07-2026.html"
     },
     {
-        title: "Consectetur Adipiscing Elit",
-        date: "07-07-2026",
-        excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-        image: "images/blog/placeholder2.jpg",
-        tags: ["Programming"],
-        link: "blog/placeholder2.html"
+        title: "The Great Diffuser Problem",
+        date: "25-07-2026",
+        excerpt: "Exploring light diffusers in UE5.6",
+        image: "images/blogimg/Diffuser_lights.png",
+        tags: ["Art"],
+        link: "blog/25-07-2026.html"
     },
-    {
-        title: "Sed Do Eiusmod Tempor",
-        date: "29-06-2026",
-        excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-        image: "images/blog/placeholder3.jpg",
-        tags: ["Design"],
-        link: "blog/placeholder3.html"
-    },
-    {
-        title: "Incididunt Ut Labore",
-        date: "22-06-2026",
-        excerpt: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-        image: "images/blog/placeholder4.jpg",
-        tags: ["Events", "Off-topic"],
-        link: "blog/placeholder4.html"
-    },
-    {
-        title: "Technical Art Experiments",
-        date: "20-06-2026",
-        excerpt: "Materials, shaders and improving workflows.",
-        image: "images/blog/article2.jpg",
-        tags: ["Programming", "Design"],
-        link: "blog/article2.html"
-    },
-    {
-        title: "Creating Modular Environments",
-        date: "01-06-2026",
-        excerpt: "A breakdown of planning, modelling and optimisation.",
-        image: "images/blog/article1.jpg",
-        tags: ["Art", "Design"],
-        link: "blog/article1.html"
-    }
+   
+   
+   
 
     // Newer posts go ABOVE this line, using the template above.
 
