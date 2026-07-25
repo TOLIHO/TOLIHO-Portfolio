@@ -698,15 +698,18 @@ section {
     margin-bottom: 0;
 }
 
-/* Single image + caption - used as <div class="blog-image-block">
-   containing an <img> and a <p class="caption">. This had no CSS at
-   all before, which is why its captions were just plain paragraph
-   text with no special treatment. */
-.post-article .blog-image-block {
-    margin: 55px 0; /* was effectively 0 (unstyled) - more breathing room from the paragraphs above/below */
+/* Single image (or video) + caption - used as <div class="blog-image-block">
+   containing an <img> or <video>, and a <p class="caption">. Works
+   the same way inside .post-article or .project-article. */
+.post-article .blog-image-block,
+.project-article .blog-image-block {
+    margin: 55px 0; /* more breathing room from the paragraphs above/below */
 }
 
-.post-article .blog-image-block img {
+.post-article .blog-image-block img,
+.post-article .blog-image-block video,
+.project-article .blog-image-block img,
+.project-article .blog-image-block video {
     display: block;
     width: 100%;
     height: auto;
@@ -717,7 +720,8 @@ section {
     margin: 55px 0; /* was 35px - more breathing room from the paragraphs above/below */
 }
 
-.post-article img {
+.post-article img,
+.post-article video {
     display: block;
     width: 100%;
     height: auto;
@@ -777,16 +781,18 @@ section {
 }
 
 .image-row img,
+.image-row video,
 .image-row figure {
     flex: 1;
     min-width: 0; /* lets these shrink below the image's natural width instead of overflowing the row */
     margin: 0;
 }
 
-.image-row img {
+.image-row img,
+.image-row video {
     width: 100%;
     height: 100%;
-    aspect-ratio: 4 / 3; /* keeps both images the same height/shape even if the source photos differ - change this if you want a different crop */
+    aspect-ratio: 4 / 3; /* keeps both the same height/shape even if the source differs - change this if you want a different crop */
     object-fit: cover;
     display: block;
     border-radius: 4px;
@@ -1885,7 +1891,8 @@ footer {
     margin: 55px 0;
 }
 
-.project-article img {
+.project-article img,
+.project-article video {
     display: block;
     width: 100%;
     height: auto;
