@@ -50,7 +50,7 @@ const projects = [
         image: "images/portfolioimg/project1.jpg",
         category: "Art",
         tags: ["Blender", "Substance Painter", "Prop Model", "Weapon Model"],
-        link: "porfolioproj/DABolter.html"
+        link: "portfolioproj/DABolter.html"
     },
     {
         title: "Red Menace: Beyond the Threshold",
@@ -59,7 +59,7 @@ const projects = [
         image: "images/portfolioimg/project2.jpg",
         category: "Art",
         tags: ["Environment Art", "Substance Painter", "Substance Designer", "MA Project", "Report", "UE5", "3DS Max", "Niagara"],
-        link: "porfolioproj/RedMenace.html"
+        link: "portfolioproj/RedMenace.html"
     },
     {
         title: "Witchhunter's Ordained Rifle",
@@ -68,7 +68,7 @@ const projects = [
         image: "images/portfolioimg/project3.jpg",
         category: "Art",
         tags: ["3DS Max", "Marmoset Toolbag", "Substance Painter", "Substance Designer", "MA Project", "Prop Model", "Weapon Model"],
-        link: "porfolioproj/WitchhunterRifle.html"
+        link: "portfolioproj/WitchhunterRifle.html"
     },
     {
         title: "Vault 101 - Reimagined",
@@ -77,7 +77,7 @@ const projects = [
         image: "images/portfolioimg/project4.jpg",
         category: "Art",
         tags: ["Environment", "Quixel", "Substance Painter", "UE4", "3DS Max", "Niagara", "BA Project"],
-        link: "porfolioproj/Vault101.html"
+        link: "portfolioproj/Vault101.html"
     },
     {
         title: "Arch Viz - Dining Room and Social Area",
@@ -86,7 +86,7 @@ const projects = [
         image: "images/portfolioimg/project5.jpg",
         category: "Art",
         tags: ["Enviroment", "Arch Viz", "UE4", "Substance Painter", "Substance Designer", "BA Project"],
-        link: "porfolioproj/ArchViz.html"
+        link: "portfolioproj/ArchViz.html"
     }
 
     // New projects can go anywhere - "date" is what decides order.
