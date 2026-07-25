@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Diffuser Problem</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- ===========================
+     NAVIGATION
+=========================== -->
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/toliho-logo.png" alt="Toliho">
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span><span></span><span></span>
+        </label>
+
+        <div class="links">
+            <a href="../portfolio.html">Portfolio</a>
+            <a href="../cv.html">CV</a>
+            <a href="../blog.html">Blog</a>
+            <a href="../about.html">About/Contact</a>
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- ===========================
+     HERO
+=========================== -->
+
+<section class="blog-hero">
+    <img src="../images/blogimg/Diffuser-lights.png" alt="">
+    <h1>The Great Diffuser Problem</h1>
+    <p class="blog-date">25 July 2026</p>
+</section>
+ 
+
+
+
+<!-- ===========================
+     BLOG CONTENT (FIXED LAYOUT)
+=========================== -->
+
+<section class="post-article">
+
+    <!-- LEFT COLUMN: TEXT -->
+    <div class="post-text">
+
+        <h2>Section Header</h2>
+
+        <p>
+           For a good while I've been working towards my newest environment piece, while I don't want to give too much away before I publish it as a portfolio piece, I'm sure many will be able to identify what I'm working on from the screenshots in this post. 
+        </p>
+
+        <p>
+           From the very beginning of this project I've been working to improve the effectiveness of my lighting and the apparent quality of the light fittings themselves is a part of that. In office buildings, often fitted with overhead flourescent lighting, you will typically see a layer of frosted plastic that diffuses the lights above. 
+           It's an effect I've been working to reproduce for some time, to various degrees of success. UE5 being a real time engine seems to struggle with this specific type of material effect, meaning I had to try several different solutions before I settled on the one I found to be most effective.
+        </p>
+
+      
+       <div class="blog-image-block">
+            <img src="../images/blogimg/Overhead-Example.jpeg" alt="Overhead Lighting Example - alamy">
+            <p class="caption">Overhead Lighting Example - alamy</p>
+        </div>
+      
+        <p>
+          The above example shows roughly the effect I was aiming to achieve. You can see the flourescent light bulbs show through the diffused plastic, like the blurred reflection in a rough surface. To mimic this effect I first tried to use a masked transluscent material with a noise map in the place of a mask, hoping that this would allow me to essentially fake the effect through the dithered opacity.
+          Unfortunately, this effect was not exactly the effect I was aiming for. The opacity was too severe, showing too much of the bulb without any diffussion to be seen. I then tried to simply use a flat emissive texture, that when used in conjunction with the proper lighting could have given me the effect I was hoping for, or at least this was the hope. You can see the effect of this in the image below.
+        </p>
+
+      <div class="blog-image-block">
+            <img src="../images/blogimg/Emissive-Example.png" alt="Emissive Example">
+            <p class="caption">Emissive Example</p>
+        </div>
+
+        <p>
+           This effect, while better than the previous masked opacity attempt, still didn't achieve my desired result. Being too uniform in it's emissive values, and appearing overly flat. In an attempt to fix this issue, I turned my attention to substrate materials. Susbtrate materials are currently an experimental feature within UE5.6 (which is the version I am using), restoring IOR and being great for glasslike transluscent materials. There was a hope that this would be the solution I had been hoping for.
+          If I were using UE5.7 I may have managed to get this working as intended since it has since seen full release. My attempts to use it in 5.6 were very close to giving me the effect I wanted. 
+        </p>
+
+      <div class="blog-image-block">
+            <img src="../images/blogimg/Substrate-Example_1.png" alt="Substrate Example Image">
+            <p class="caption">Substrate Material Example</p>
+        </div>
+
+
+        <!-- ===========================
+             TEMPLATES — copy/paste whichever block you need
+             into the post-text column above. These are commented
+             out so they don't render.
+        ============================ -->
+
+        <!--
+        TEXT BLOCK TEMPLATE
+        <div class="blog-text-block">
+            <h2>Section Header</h2>
+            <p>Your paragraph text goes here. Add as many paragraphs as you want.</p>
+        </div>
+        -->
+
+        <!--
+        IMAGE BLOCK TEMPLATE
+        <div class="blog-image-block">
+            <img src="../images/example.jpg" alt="Description">
+            <p class="caption">Optional caption text.</p>
+        </div>
+        -->
+
+        <!--
+        QUOTE BLOCK TEMPLATE
+        <div class="blog-quote">
+            <p>"A highlighted quote, thought, or important note."</p>
+        </div>
+        -->
+
+        <!--
+        GALLERY TEMPLATE
+        <div class="blog-gallery">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/img2.jpg" alt="">
+            <img src="../images/img3.jpg" alt="">
+        </div>
+        -->
+
+        <!--
+        SUBHEADER TEMPLATE
+        <div class="blog-text-block">
+            <h3>Subheader</h3>
+            <p>Supporting text goes here.</p>
+        </div>
+        -->
+
+    </div>
+
+    <!-- RIGHT COLUMN: IMAGE -->
+    <div class="post-image">
+        <img src="../images/about-artwork.jpg"
+        alt="Environment artwork by Toliho">
+    </div>
+
+</section>
+
+
+
+<!-- ===========================
+     MORE POSTS BUTTON
+=========================== -->
+
+<div class="more-posts">
+    <a href="../blog.html" class="button">More Posts</a>
+</div>
+
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+<footer>
+    <p>© Toliho — Tom Oliver Hockenhull</p>
+</footer>
+
+</body>
+</html>
