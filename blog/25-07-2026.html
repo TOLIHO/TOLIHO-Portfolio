@@ -89,11 +89,55 @@
           If I were using UE5.7 I may have managed to get this working as intended since it has since seen full release. My attempts to use it in 5.6 were very close to giving me the effect I wanted. 
         </p>
 
-      <div class="blog-image-block">
-            <img src="../images/blogimg/Substrate-Example_1.png" alt="Substrate Example Image">
-            <p class="caption">Substrate Material Example</p>
+        <div class="image-row">
+            <figure>
+                <img src="../images/blogimg/Substrate_Example_1.png" alt="Substrate Example Image">
+                <figcaption>Substrate Material Example</figcaption>
+            </figure>
+            <figure>
+                <img src="../images/blogimg/Substrate_Example_2.png" alt="Substrate Example Image">
+                <figcaption>Substrate Material Example</figcaption>
+            </figure>
         </div>
 
+        <p>
+           In the above images you can see the issue I came to have with this method. The frosted effect was very close to what I wanted, but seemed to cull near the frame of the light fixture, going entirely transparent. Similarly, it appears to be a screenspace effect, and the further away the camera went from the material, the worse the culling became. 
+            It also appeared to me that IOR is still broken as it was in UE4. You can always identify an Unreal Engine game by it's use of refraction, which has always refracted incorrectly to show geometry in front of the "glass" at certain angles. I've seen this in published games several times in the past, most recently in "Still Wakes the Deep" where you could clearly see this broken effect in the oil rig's control room.
+        </p>
+
+        <p>
+          To troubleshoot this issue, I attempted to make the "shroud" thicker, and lowered it further than before, also using a subdivided cube to see if vertex density had any impact on the effect. Sadly, this didn't fix all the issues, fixing the edge culling issue but introducing more pronounced IOR errors. 
+        </p>
+
+        <div class="image-row">
+            <figure>
+                <img src="../images/blogimg/Substrate_Example_3.png" alt="Substrate Example Image">
+                <figcaption>Substrate Material Example</figcaption>
+            </figure>
+            <figure>
+                <img src="../images/blogimg/Substrate_Example_4.png" alt="Substrate Example Image">
+                <figcaption>Substrate Material Example</figcaption>
+            </figure>
+        </div>
+
+        <p>
+          As can be seen above, the effect looked great from a certain angle, but had a very apparent IOR bug when the camera approaches too close to the fitting. It was a dissapointing result, but as it's still experimental in this version, I will have to do some tests once this piece is done to see if these errors have been remedied in the newest version of the engine.
+        </p>
+
+        <p>
+          So, the substrate was a bust. In times like these you have to think of Occam's Razor. "The best solution is usually the easiest one". While the experience of using the substrate material was valuable in that I have developed familiarity with the new features, I decided to try a simpler, and ultimately more performant solution to the problem.
+         I opted to somewhat fake the effect. To do so I created a gradient texture, that had dim edges. This was plugged into a default lit, subsurface material. The hope being that the subsurface, when used in conjunction with the dithered effect of the gradient, would create a convincing enough effect. I plugged the gradient texture into both Base Colour and Emissive Colour, which further pronounced the readability of a light diffuser.
+            To give the diffuser a less smooth apperance, I put a noise node into the normal, which gave the shrouds a slightly grainy appearance. When these effects came together the effect is about as close to perfect as I can reasonably hope to achieve. There is more investigation to be done for future projects on other ways that I can create this effect. I had considered using parralaxed occlusion for it as I had for room interiors in previous projects, but since this effect satisfied my requirements I chose to not fix what isn't broken.
+        </p>
+
+        <div class="blog-image-block">
+            <img src="../images/blogimg/Subsurface_Example.png" alt="Subsurface Example">
+            <p class="caption">Subsurface Example</p>
+        </div>
+
+        <p>
+            Overall, I'm fairly happy with how this effect came out, it's convincing enough for what is unlikely to be a focal point of the scene. Enviroments are a holistic artform where even the smallest elements come together to create the atmosphere and immersion in a scene. I should hopefully have more to discuss on this project in coming weeks. Thank you for reading.
+        </p>
 
         <!-- ===========================
              TEMPLATES — copy/paste whichever block you need
@@ -143,12 +187,7 @@
 
     </div>
 
-    <!-- RIGHT COLUMN: IMAGE -->
-    <div class="post-image">
-        <img src="../images/about-artwork.jpg"
-        alt="Environment artwork by Toliho">
-    </div>
-
+  
 </section>
 
 
@@ -168,7 +207,7 @@
 =========================== -->
 
 <footer>
-    <p>© Toliho — Tom Oliver Hockenhull</p>
+    <p>© Toliho — Tom Oliver Hockenhull - This site is fully compliant with international bird law.</p>
 </footer>
 
 </body>
