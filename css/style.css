@@ -665,7 +665,7 @@ section {
 .post-article {
     /* was 750px - widened slightly now that the padding bug below is
        fixed, since that's what was making this feel too narrow */
-    max-width: 850px;
+    max-width: 800px;
     margin: 0 auto;
     /* was "40px 8%" - percentage padding is computed against the
        width of the containing block (basically the full page), NOT
@@ -675,7 +675,7 @@ section {
        A fixed px value doesn't have that problem. */
     padding: 40px 32px;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* was 1.2rem - a bit bigger, per your request */
     line-height: 1.7;
     color: var(--text);
 }
@@ -698,8 +698,23 @@ section {
     margin-bottom: 0;
 }
 
+/* Single image + caption - used as <div class="blog-image-block">
+   containing an <img> and a <p class="caption">. This had no CSS at
+   all before, which is why its captions were just plain paragraph
+   text with no special treatment. */
+.post-article .blog-image-block {
+    margin: 55px 0; /* was effectively 0 (unstyled) - more breathing room from the paragraphs above/below */
+}
+
+.post-article .blog-image-block img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
 .post-article figure {
-    margin: 35px 0;
+    margin: 55px 0; /* was 35px - more breathing room from the paragraphs above/below */
 }
 
 .post-article img {
@@ -709,11 +724,16 @@ section {
     border-radius: 4px;
 }
 
+.post-article .caption,
 .post-article figcaption {
+    /* caption-to-image distance (margin-top) is unchanged - only the
+       outer spacing above/below the whole image block, and the
+       caption's own look, changed here */
     margin-top: 10px;
     text-align: center;
-    font-size: 0.95rem;
-    color: var(--muted);
+    font-size: 0.85rem; /* was 0.95rem - smaller, per your request */
+    font-style: italic;
+    color: var(--muted); /* a light grey against the dark background */
 }
 
 @media(max-width:900px){
@@ -753,7 +773,7 @@ section {
 .image-row {
     display: flex;
     gap: 20px;
-    margin: 35px 0;
+    margin: 55px 0; /* was 35px - more breathing room from the paragraphs above/below, matching the other image blocks */
 }
 
 .image-row img,
@@ -773,10 +793,15 @@ section {
 }
 
 .image-row figcaption {
+    /* caption-to-image distance (margin-top) is unchanged - only the
+       image-row's own outer spacing above/below, and the caption's
+       look, changed here (see .post-article .caption above for the
+       same treatment). */
     margin-top: 10px;
     text-align: center;
-    font-size: 0.95rem;
-    color: var(--muted);
+    font-size: 0.85rem; /* was 0.95rem - smaller, per your request */
+    font-style: italic;
+    color: var(--muted); /* a light grey against the dark background */
 }
 
 @media(max-width:600px){
