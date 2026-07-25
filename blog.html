@@ -173,14 +173,20 @@
         return params.get('tag') || 'all';
     }
 
-    function getFilteredPosts() {
-        if (currentTag === 'all') return posts;
-        return posts.filter(post => post.tags && post.tags.includes(currentTag));
-    }
-
     function parseDate(dateStr) {
         const [day, month, year] = dateStr.split('-').map(Number);
         return new Date(year, month - 1, day);
+    }
+
+    function getFilteredPosts() {
+        // Sort newest-first, same as the homepage does, before any
+        // tag filtering - this was missing entirely before, so posts
+        // just showed in whatever order they happen to sit in
+        // js/blog-posts.js (oldest first, if that's the order they
+        // were added in).
+        const sorted = [...posts].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+        if (currentTag === 'all') return sorted;
+        return sorted.filter(post => post.tags && post.tags.includes(currentTag));
     }
 
     function formatDate(dateStr) {
