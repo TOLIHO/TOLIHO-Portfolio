@@ -663,9 +663,17 @@ section {
    </section>
 */
 .post-article {
-    max-width: 750px;
+    /* was 750px - widened slightly now that the padding bug below is
+       fixed, since that's what was making this feel too narrow */
+    max-width: 850px;
     margin: 0 auto;
-    padding: 40px 8%;
+    /* was "40px 8%" - percentage padding is computed against the
+       width of the containing block (basically the full page), NOT
+       against this element's own 850px cap, so that "8%" was adding
+       100px+ of padding on each side on a normal desktop screen,
+       squeezing the actual text down far narrower than intended.
+       A fixed px value doesn't have that problem. */
+    padding: 40px 32px;
     text-align: left;
     font-size: 1.2rem;
     line-height: 1.7;
