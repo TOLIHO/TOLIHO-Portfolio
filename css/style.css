@@ -665,7 +665,7 @@ section {
 .post-article {
     /* was 750px - widened slightly now that the padding bug below is
        fixed, since that's what was making this feel too narrow */
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     /* was "40px 8%" - percentage padding is computed against the
        width of the containing block (basically the full page), NOT
