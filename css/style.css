@@ -665,7 +665,7 @@ section {
 .post-article {
     /* was 750px - widened slightly now that the padding bug below is
        fixed, since that's what was making this feel too narrow */
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
     /* was "40px 8%" - percentage padding is computed against the
        width of the containing block (basically the full page), NOT
@@ -1728,4 +1728,269 @@ footer {
         min-height: auto;
     }
 
+}
+
+
+/* =====================================================
+   PORTFOLIO PROJECT PAGE
+
+   Individual project page template - built the same way as
+   .blog-hero / .post-article, but capped at 900px (vs 800px for
+   blog posts) and its inline images are click-to-expand via
+   js/lightbox.js instead of just sitting static.
+
+   Example markup:
+
+   <section class="project-hero">
+       <img src="images/portfolio/example-hero.jpg" alt="">
+       <h1>Project Title</h1>
+       <div class="project-meta">
+           <span class="project-date">15 April 2026</span>
+           <div class="project-tags">
+               <span>3DS Max</span>
+               <span>Substance Painter</span>
+           </div>
+       </div>
+   </section>
+
+   <section class="project-article">
+       <h2>Section Header</h2>
+       <p>Paragraph text...</p>
+
+       <figure>
+           <img src="images/portfolio/shot-1.jpg" alt="Description" class="expandable">
+           <figcaption>Optional caption text.</figcaption>
+       </figure>
+
+       <div class="image-row">
+           <figure>
+               <img src="images/portfolio/shot-2.jpg" alt="Description" class="expandable">
+           </figure>
+           <figure>
+               <img src="images/portfolio/shot-3.jpg" alt="Description" class="expandable">
+           </figure>
+       </div>
+   </section>
+
+   .image-row (side-by-side images) and .blog-image-block (single
+   image + <p class="caption">) both already exist above and work
+   the same way inside .project-article as they do inside
+   .post-article - just add class="expandable" to any <img> you
+   want to be click-to-enlarge.
+===================================================== */
+
+.project-hero {
+    text-align: left;
+}
+
+/* :has(> img) scopes this to project pages that actually have a
+   hero image, same reasoning as .blog-hero:has(> img). */
+.project-hero:has(> img) {
+    position: relative;
+    min-height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.project-hero:has(> img) > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.project-hero:has(> img) h1,
+.project-hero:has(> img) .project-meta {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding-left: 8%;
+    padding-right: 8%;
+    background: rgba(12,15,13,0.75);
+    backdrop-filter: blur(15px);
+}
+
+.project-hero:has(> img) h1 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.15;
+    padding-top: 30px;
+}
+
+.project-hero:has(> img) .project-meta {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-meta .project-date {
+    color: var(--green);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.project-meta .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-meta .project-tags span {
+    border: 1px solid var(--green);
+    color: var(--green);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: .8rem;
+}
+
+.project-article {
+    /* 900px per your request - 100px wider than .post-article's
+       800px, since project write-ups tend to lean more on imagery */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px; /* fixed px, not %  - see the note on .post-article for why */
+    text-align: left;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+.project-article h2 {
+    font-size: 2.5rem;
+    color: var(--green);
+    margin: 40px 0 25px;
+}
+
+.project-article h2:first-child {
+    margin-top: 0;
+}
+
+.project-article p {
+    margin-bottom: 25px;
+}
+
+.project-article p:last-child {
+    margin-bottom: 0;
+}
+
+.project-article figure {
+    margin: 55px 0;
+}
+
+.project-article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.project-article figcaption,
+.project-article .caption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+}
+
+/* Any image you want click-to-expand - add this class in the HTML.
+   Cursor + slight hover dim signal it's interactive; js/lightbox.js
+   handles the actual click behaviour. */
+.project-article img.expandable,
+.image-row img.expandable {
+    cursor: zoom-in;
+    transition: opacity .2s;
+}
+
+.project-article img.expandable:hover,
+.image-row img.expandable:hover {
+    opacity: 0.85;
+}
+
+@media(max-width:900px){
+    .project-article {
+        padding: 30px 8%;
+    }
+    .project-article h2 {
+        font-size: 2rem;
+    }
+}
+
+
+/* =====================================================
+   LIGHTBOX (click-to-expand images)
+   Needs js/lightbox.js. Add class="expandable" to any <img> you
+   want this behaviour on - works anywhere on the site, not just
+   .project-article.
+===================================================== */
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12,15,13,0.92);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    z-index: 500;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-overlay img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--text);
+    color: var(--text);
+    background: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.lightbox-close:hover {
+    background: var(--text);
+    color: var(--background);
+}
+
+@media(max-width:600px){
+    .lightbox-overlay {
+        padding: 20px;
+    }
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+    }
 }
