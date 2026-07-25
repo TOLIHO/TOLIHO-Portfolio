@@ -718,6 +718,66 @@ section {
 }
 
 
+/* Two (or more) images side by side, inline with the surrounding
+   text - drop this wrapper around plain <img> tags or <figure>
+   elements (with an optional <figcaption> each). Works inside either
+   .post-text or .post-article; not nested under either one, so it's
+   reusable in both.
+
+   Example markup:
+   <div class="image-row">
+       <img src="../images/example-1.jpg" alt="Description">
+       <img src="../images/example-2.jpg" alt="Description">
+   </div>
+
+   Or with captions:
+   <div class="image-row">
+       <figure>
+           <img src="../images/example-1.jpg" alt="Description">
+           <figcaption>Caption for the first image.</figcaption>
+       </figure>
+       <figure>
+           <img src="../images/example-2.jpg" alt="Description">
+           <figcaption>Caption for the second image.</figcaption>
+       </figure>
+   </div>
+*/
+.image-row {
+    display: flex;
+    gap: 20px;
+    margin: 35px 0;
+}
+
+.image-row img,
+.image-row figure {
+    flex: 1;
+    min-width: 0; /* lets these shrink below the image's natural width instead of overflowing the row */
+    margin: 0;
+}
+
+.image-row img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3; /* keeps both images the same height/shape even if the source photos differ - change this if you want a different crop */
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+.image-row figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+@media(max-width:600px){
+    .image-row {
+        flex-direction: column;
+    }
+}
+
+
 /* Scroll-down indicator - sits in the bottom-right corner of the
    hero, overlapping the translucent banner, to signal there's more
    below. Deliberately just a smooth anchor-jump (no scroll-snap) so
