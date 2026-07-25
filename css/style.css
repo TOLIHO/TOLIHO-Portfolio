@@ -549,7 +549,6 @@ section {
 }
 
 .blog-hero:has(> img) .blog-date {
-    font-size: 0.96rem; /* was 1.2rem (inherited from the base .blog-date rule) - 80% */
     padding-bottom: 30px;
 }
 
@@ -564,7 +563,7 @@ section {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 24%;
     align-items: stretch;
-    gap: 32px; /* was 40px - scaled to ~80% along with the text below */
+    gap: 40px;
     width: 100%;
 
     /* Cancel the global "section" LEFT padding only, so .post-text's
@@ -577,26 +576,26 @@ section {
 
     /* The global "section" rule adds 200px of top padding, which is
        what pushes this block so far below the date. Pull it in. */
-    padding-top: 32px; /* was 40px - scaled to ~80% */
+    padding-top: 40px;
 }
 
 .post-text {
     max-width: 900px;
     margin-left: 8%;
     text-align: left;
-    font-size: 0.96rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text);
 }
 
 .post-text h2 {
-    font-size: 2rem; /* was 2.5rem - 80% */
+    font-size: 2.5rem;
     color: var(--green);
-    margin-bottom: 20px; /* was 25px - 80% */
+    margin-bottom: 25px;
 }
 
 .post-text p {
-    margin-bottom: 20px; /* was 25px - 80% */
+    margin-bottom: 25px;
 }
 
 .post-text p:last-child {
@@ -608,11 +607,10 @@ section {
        img's height:100% below actually resolve against something,
        so it can stretch to fill the grid row instead of collapsing
        to its own intrinsic height. margin-right matches
-       .about-feature-image's own inset from the page edge, scaled
-       to ~80% along with everything else on this page. */
+       .about-feature-image's own inset from the page edge. */
     display: flex;
     width: 100%;
-    margin: 0 32px 0 0;
+    margin: 0 40px 0 0;
 }
 
 .post-image img {
@@ -647,6 +645,118 @@ section {
 }
 
 
+/* Centered "news article" style post layout - an alternative to
+   .post-split-layout for posts where you'd rather have a single
+   centered text column with images sitting inline, the way a news
+   article does, instead of a fixed side image column. Use whichever
+   fits the post; both can appear on the same page one after another.
+
+   Example markup:
+   <section class="post-article">
+       <h2>Section Header</h2>
+       <p>Paragraph text...</p>
+       <figure>
+           <img src="../images/example.jpg" alt="Description">
+           <figcaption>Optional caption text.</figcaption>
+       </figure>
+       <p>More paragraph text...</p>
+   </section>
+*/
+.post-article {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 40px 8%;
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+.post-article h2 {
+    font-size: 2.5rem;
+    color: var(--green);
+    margin: 40px 0 25px;
+}
+
+.post-article h2:first-child {
+    margin-top: 0;
+}
+
+.post-article p {
+    margin-bottom: 25px;
+}
+
+.post-article p:last-child {
+    margin-bottom: 0;
+}
+
+.post-article figure {
+    margin: 35px 0;
+}
+
+.post-article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.post-article figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+@media(max-width:900px){
+    .post-article {
+        padding: 30px 8%;
+    }
+    .post-article h2 {
+        font-size: 2rem;
+    }
+}
+
+
+/* Scroll-down indicator - sits in the bottom-right corner of the
+   hero, overlapping the translucent banner, to signal there's more
+   below. Deliberately just a smooth anchor-jump (no scroll-snap) so
+   normal free scrolling through the article is never interrupted
+   once the reader's past the hero. */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 8%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.scroll-down-arrow::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: .3s;
+}
+
+.scroll-down-arrow:hover {
+    background: var(--green);
+}
+
+.scroll-down-arrow:hover::before {
+    border-color: var(--background);
+}
+
+
 /* More posts button */
 .more-posts {
     text-align: center;
@@ -654,8 +764,8 @@ section {
 }
 
 .more-posts .button {
-    padding: 13px 36px; /* was 16px 45px - 80% */
-    font-size: 0.96rem; /* was 1.2rem - 80% */
+    padding: 16px 45px;
+    font-size: 1.2rem;
     font-weight: 600;
     border-width: 2px;
 }
